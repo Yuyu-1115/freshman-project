@@ -4,7 +4,7 @@ plugins {
     id("org.javamodularity.moduleplugin") version "1.8.12"
     id("org.openjfx.javafxplugin") version "0.0.13"
     id("org.beryx.jlink") version "2.25.0"
-    id("org.jetbrains.kotlin.jvm") version "2.0.0"
+    id("org.jetbrains.kotlin.jvm") version "1.9.20"
 }
 
 group = "org.openjfx.freshproject"
@@ -35,6 +35,8 @@ javafx {
     version = "22.0.1"
     modules = listOf("javafx.controls", "javafx.fxml", "javafx.web", "javafx.swing", "javafx.media")
 }
+
+
 
 dependencies {
     implementation("org.controlsfx:controlsfx:11.2.1")
