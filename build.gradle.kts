@@ -4,6 +4,7 @@ plugins {
     id("org.javamodularity.moduleplugin") version "1.8.12"
     id("org.openjfx.javafxplugin") version "0.0.13"
     id("org.beryx.jlink") version "2.25.0"
+    id("org.jetbrains.kotlin.jvm") version "2.0.0"
 }
 
 group = "org.openjfx.freshproject"
