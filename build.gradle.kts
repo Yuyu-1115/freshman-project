@@ -1,10 +1,10 @@
 plugins {
     java
     application
-    id("org.javamodularity.moduleplugin") version "1.8.12"
-    id("org.openjfx.javafxplugin") version "0.0.13"
-    id("org.beryx.jlink") version "2.25.0"
-    id("org.jetbrains.kotlin.jvm") version "1.9.20"
+    id("org.javamodularity.moduleplugin") version "1.8.15"
+    id("org.openjfx.javafxplugin") version "0.1.0"
+    id("org.beryx.jlink") version "2.26.0"
+    id("org.jetbrains.kotlin.jvm") version "1.9.21"
 }
 
 group = "org.openjfx.freshproject"
@@ -18,7 +18,7 @@ val junitVersion = "5.10.2"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(22)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -27,12 +27,12 @@ tasks.withType<JavaCompile> {
 }
 
 application {
-    mainModule.set("org.openjfx.freshproject.freshmanproject")
-    mainClass.set("org.openjfx.freshproject.freshmanproject.HelloApplication")
+    mainModule.set("org.ncu.fresh")
+    mainClass.set("org.ncu.fresh.Main")
 }
 
 javafx {
-    version = "22.0.1"
+    version = "21.0.7"
     modules = listOf("javafx.controls", "javafx.fxml", "javafx.web", "javafx.swing", "javafx.media")
 }
 

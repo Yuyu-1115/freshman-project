@@ -1,4 +1,4 @@
-module org.openjfx.freshproject.freshmanproject {
+module org.ncu.fresh {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -10,4 +10,5 @@ module org.openjfx.freshproject.freshmanproject {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
+    exports org.ncu.fresh to com.almasb.fxgl.core;
 }
