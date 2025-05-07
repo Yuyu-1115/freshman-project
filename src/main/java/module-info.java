@@ -10,6 +10,4 @@ module org.openjfx.freshproject.freshmanproject {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens org.openjfx.freshproject.freshmanproject to javafx.fxml;
-    exports org.openjfx.freshproject.freshmanproject;
 }
