@@ -1,4 +1,4 @@
-package org.ncu.fresh.entity;
+package org.ncu.fresh.core.entity;
 
 public enum EntityType {
     PLAYER,
