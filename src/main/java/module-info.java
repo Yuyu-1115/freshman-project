@@ -10,5 +10,6 @@ module org.ncu.fresh {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
+    exports org.ncu.fresh.entity.component;
     exports org.ncu.fresh to com.almasb.fxgl.core;
 }

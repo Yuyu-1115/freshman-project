@@ -10,11 +10,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class ProjectileFactory implements EntityFactory {
+    // Create a new Projectile based on given position and direction
     public static Entity createProjectile(Point2D position, Point2D direction) {
         return FXGL.entityBuilder()
                 .type(EntityType.PROJECTILE)
-                .viewWithBBox(new Circle(20, Color.RED))
-                .with(new ProjectileComponent())
+                .at(position)
+                .view(new Circle(5, Color.RED))
+                .with(new ProjectileComponent(direction, 20))
                 .collidable()
                 .build();
     }
