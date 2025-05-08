@@ -1,10 +1,10 @@
-package org.ncu.fresh.entity.factory;
+package org.ncu.fresh.core.entity.factory;
 
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
-import org.ncu.fresh.entity.EntityType;
+import org.ncu.fresh.core.entity.EntityType;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;

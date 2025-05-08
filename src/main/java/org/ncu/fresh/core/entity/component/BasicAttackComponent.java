@@ -1,13 +1,9 @@
-package org.ncu.fresh.entity.component;
+package org.ncu.fresh.core.entity.component;
 
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
-import com.almasb.fxgl.entity.components.TransformComponent;
-import eu.hansolo.toolboxfx.geom.Point;
 import javafx.geometry.Point2D;
-import org.ncu.fresh.entity.factory.ProjectileFactory;
-
-import static java.lang.Math.sin;
+import org.ncu.fresh.core.entity.factory.ProjectileFactory;
 
 public class BasicAttackComponent extends Component {
 

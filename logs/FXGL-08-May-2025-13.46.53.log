@@ -86,7 +86,7 @@ java.lang.RuntimeException: Initialization failed
 	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
 	at javafx.graphics@21.0.7/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:455)
 	at javafx.graphics@21.0.7/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
-Caused by: com.almasb.fxgl.core.reflect.ReflectionException: Cannot inject Transform(400.0, 300.0, 0.0, 1.0, 1.0) into position Error: java.lang.IllegalAccessException: class com.almasb.fxgl.core.reflect.ReflectionUtils (in module com.almasb.fxgl.core) cannot access a member of class org.ncu.fresh.entity.component.BasicAttackComponent (in module org.ncu.fresh) with modifiers "protected"
+Caused by: com.almasb.fxgl.core.reflect.ReflectionException: Cannot inject Transform(400.0, 300.0, 0.0, 1.0, 1.0) into position Error: java.lang.IllegalAccessException: class com.almasb.fxgl.core.reflect.ReflectionUtils (in module com.almasb.fxgl.core) cannot access a member of class org.ncu.fresh.core.component.entity.BasicAttackComponent (in module org.ncu.fresh) with modifiers "protected"
 	at com.almasb.fxgl.core@17.3/com.almasb.fxgl.core.reflect.ReflectionUtils.inject(ReflectionUtils.java:203)
 	at com.almasb.fxgl.entity@17.3/com.almasb.fxgl.entity.Entity.lambda$injectFields$2(Entity.java:510)
 	at java.base/java.util.Optional.ifPresent(Optional.java:178)
