@@ -3,14 +3,11 @@ package org.ncu.fresh;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
-import com.almasb.fxgl.dsl.components.HealthDoubleComponent;
-import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.physics.CollisionHandler;
 import javafx.geometry.Point2D;
-import org.ncu.fresh.core.entity.EntityType;
-import org.ncu.fresh.core.entity.component.HealthBarComponent;
-import org.ncu.fresh.core.entity.factory.MobFactory;
+import org.ncu.fresh.core.entity.factory.EnemyFactory;
 import org.ncu.fresh.core.entity.factory.PlayerFactory;
+import org.ncu.fresh.core.handler.entity.MobProjectileHandler;
+import org.ncu.fresh.core.handler.entity.PlayerProjectileHandler;
 
 public class Main extends GameApplication {
 
@@ -18,26 +15,15 @@ public class Main extends GameApplication {
     protected void initGame() {
         PlayerFactory.createPlayer();
         for (int i = 0; i < 4; i++) {
-            Point2D position = new Point2D(100 + i * 200, 100);
-            MobFactory.createMob(position, 100);
+            Point2D position = new Point2D(100 + i * 200, 100 + i * 100);
+            EnemyFactory.createEnemy(position, 100);
         }
     }
 
     @Override
     protected void initPhysics() {
-        FXGL.getPhysicsWorld().addCollisionHandler(
-                new CollisionHandler(EntityType.PROJECTILE, EntityType.ENEMY) {
-                    @Override
-                    protected void onCollision(Entity a, Entity b) {
-                        b.getComponent(HealthDoubleComponent.class).damage(20);
-                        b.getComponent(HealthBarComponent.class).onDamaged();
-                        FXGL.getGameWorld().removeEntity(a);
-                        if (b.getComponent(HealthDoubleComponent.class).isZero()) {
-                            FXGL.getGameWorld().removeEntity(b);
-                        }
-                    }
-                }
-        );
+        FXGL.getPhysicsWorld().addCollisionHandler(new PlayerProjectileHandler());
+        FXGL.getPhysicsWorld().addCollisionHandler(new MobProjectileHandler());
     }
 
     @Override

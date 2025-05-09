@@ -8,12 +8,19 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import org.ncu.fresh.core.entity.EntityType;
 
-public class HealthBarFactory implements EntityFactory {
+public class ResourceBarFactory implements EntityFactory {
     public static Entity createHealthBar(Point2D position) {
         return FXGL.entityBuilder()
                 .type(EntityType.DISPLAY)
                 .at(position)
                 .view(new Rectangle(80, 10, Color.ORANGERED))
+                .build();
+    }
+    public static Entity createExperienceBar(Point2D position) {
+        return FXGL.entityBuilder()
+                .type(EntityType.DISPLAY)
+                .at(position)
+                .view(new Rectangle(400, 40, Color.LIMEGREEN))
                 .build();
     }
 }

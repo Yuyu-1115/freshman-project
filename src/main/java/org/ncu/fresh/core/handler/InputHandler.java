@@ -1,9 +1,9 @@
-package org.ncu.fresh.core.entity.io;
+package org.ncu.fresh.core.handler;
 
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import javafx.scene.input.KeyCode;
-import org.ncu.fresh.core.entity.component.PlayerComponent;
+import org.ncu.fresh.core.entity.component.player.PlayerComponent;
 
 public class InputHandler {
     public static void initPlayerMovement(Entity player) {

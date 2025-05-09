@@ -1,4 +1,4 @@
-package org.ncu.fresh.core.entity.component;
+package org.ncu.fresh.core.entity.component.player;
 
 import com.almasb.fxgl.entity.component.Component;
 
