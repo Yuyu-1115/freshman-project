@@ -4,8 +4,10 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
+import com.almasb.fxgl.entity.components.BoundingBoxComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
-import javafx.util.Duration;
+import com.almasb.fxgl.physics.BoundingShape;
+import com.almasb.fxgl.physics.HitBox;
 import org.ncu.fresh.core.entity.EntityType;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
@@ -19,12 +21,12 @@ public class ProjectileFactory implements EntityFactory {
         Entity projectile =  FXGL.entityBuilder()
                 .type(EntityType.PROJECTILE)
                 .at(position)
-                .viewWithBBox(new Circle(5, Color.RED))
+                .view(new Circle(5, Color.RED))
                 .with(new ProjectileComponent(direction, 40))
+                .collidable()
                 .build();
-        FXGL.getGameTimer().runOnceAfter(() -> projectile.addComponent(
-                new CollidableComponent(true)),
-                Duration.millis(100));
+        projectile.getComponent(CollidableComponent.class).addIgnoredType(EntityType.PROJECTILE);
+        projectile.getComponent(BoundingBoxComponent.class).addHitBox(new HitBox("body", BoundingShape.circle(5)));
         return projectile;
     }
 }
