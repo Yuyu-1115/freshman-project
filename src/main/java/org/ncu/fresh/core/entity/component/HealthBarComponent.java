@@ -4,6 +4,8 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.HealthDoubleComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
+import javafx.geometry.Point2D;
+import javafx.util.Duration;
 import org.ncu.fresh.core.entity.factory.HealthBarFactory;
 
 public class HealthBarComponent extends Component {
@@ -12,7 +14,10 @@ public class HealthBarComponent extends Component {
     private Entity healthBar;
     private double remainTimeToDisplay = 0;
 
+
+
     @Override
+
     public void onAdded() {
         healthBar = HealthBarFactory.createHealthBar(entity.getCenter().add(-20, 40));
     }
@@ -28,13 +33,20 @@ public class HealthBarComponent extends Component {
     }
 
     public void onDamaged() {
-        double percentageChanged = entity.getComponent(HealthDoubleComponent.class).getValuePercent();
-        System.out.println(percentageChanged + " An entity got damaged!");
-        healthBar.setScaleX(percentageChanged / 100.0);
         remainTimeToDisplay = DISPLAY_TIME;
+
         healthBar.setOpacity(1);
         if (!healthBar.isActive()) {
             FXGL.getGameWorld().addEntity(healthBar);
         }
+
+        double percentageChanged = entity.getComponent(HealthDoubleComponent.class).getValuePercent() / 100.0;
+
+        FXGL.animationBuilder()
+                .duration(Duration.millis(200))
+                .scale(healthBar)
+                .from(new Point2D(healthBar.getScaleX(), 1))
+                .to(new Point2D(percentageChanged, 1))
+                .buildAndPlay();
     }
 }

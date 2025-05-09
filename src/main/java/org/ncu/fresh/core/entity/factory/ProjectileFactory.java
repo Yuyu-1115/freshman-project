@@ -25,7 +25,9 @@ public class ProjectileFactory implements EntityFactory {
                 .with(new ProjectileComponent(direction, 40))
                 .collidable()
                 .build();
+        // Making Projectile won't collide with each other so that they won't interfere with each other
         projectile.getComponent(CollidableComponent.class).addIgnoredType(EntityType.PROJECTILE);
+        projectile.getComponent(CollidableComponent.class).addIgnoredType(EntityType.PROJECTILE_PIERCING);
         projectile.getComponent(BoundingBoxComponent.class).addHitBox(new HitBox("body", BoundingShape.circle(5)));
         return projectile;
     }
