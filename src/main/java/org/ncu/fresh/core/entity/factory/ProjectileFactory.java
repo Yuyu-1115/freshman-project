@@ -17,7 +17,7 @@ public class ProjectileFactory implements EntityFactory {
         return FXGL.entityBuilder()
                 .type(EntityType.PROJECTILE)
                 .at(position)
-                .view(new Circle(5, Color.RED))
+                .viewWithBBox(new Circle(5, Color.RED))
                 .with(new ProjectileComponent(direction, 20))
                 .collidable()
                 .build();
