@@ -30,9 +30,12 @@ public class Main extends GameApplication {
                 new CollisionHandler(EntityType.PROJECTILE, EntityType.ENEMY) {
                     @Override
                     protected void onCollision(Entity a, Entity b) {
-                        b.getComponent(HealthDoubleComponent.class).damage(10);
+                        b.getComponent(HealthDoubleComponent.class).damage(20);
                         b.getComponent(HealthBarComponent.class).onDamaged();
                         FXGL.getGameWorld().removeEntity(a);
+                        if (b.getComponent(HealthDoubleComponent.class).isZero()) {
+                            FXGL.getGameWorld().removeEntity(b);
+                        }
                     }
                 }
         );
