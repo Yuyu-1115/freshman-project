@@ -13,4 +13,6 @@ module org.ncu.fresh {
     exports org.ncu.fresh.core.entity.component;
     exports org.ncu.fresh to com.almasb.fxgl.core;
     exports org.ncu.fresh.core.entity to com.almasb.fxgl.core;
+    exports org.ncu.fresh.core.entity.component.resourcebar;
+    exports org.ncu.fresh.core.entity.component.player;
 }
