@@ -7,7 +7,7 @@ import org.ncu.fresh.core.entity.factory.ProjectileFactory;
 
 public class BasicAttackComponent extends Component {
 
-    private final double ATTACK_COOLDOWN = 3.0;
+    private final double ATTACK_COOLDOWN = 1.5;
     private double currentCooldown = 0;
 
 
