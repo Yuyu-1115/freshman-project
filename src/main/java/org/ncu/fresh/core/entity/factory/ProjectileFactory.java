@@ -10,7 +10,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class ProjectileFactory implements EntityFactory {
-    // Create a new Projectile based on given position and direction
+    /*
+    Create a new Projectile based on given position and direction
+     */
     public static Entity createProjectile(Point2D position, Point2D direction) {
         return FXGL.entityBuilder()
                 .type(EntityType.PROJECTILE)
