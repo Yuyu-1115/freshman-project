@@ -31,6 +31,7 @@ public class BasicAttackComponent extends Component {
     public void attack() {
         if (currentCooldown <= 0) {
             for (int i = 0; i < 4; i++) {
+                assert entity.getType().getClass() == EntityType.class;
                 Entity projectile = ProjectileFactory.createBullet(
                         entity.getCenter(),
                         new Point2D(Math.cos(Math.PI * i / 2), -1 * Math.sin(Math.PI * i / 2)),

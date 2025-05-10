@@ -4,6 +4,7 @@ public enum EntityType {
     PLAYER,
     PROJECTILE,
     PROJECTILE_PIERCING,
+    ENEMY,
     DISPLAY,
-    ENEMY
+    DROP
 }
