@@ -1,4 +1,4 @@
-package org.ncu.fresh.core;
+package org.ncu.fresh.core.handler;
 
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;

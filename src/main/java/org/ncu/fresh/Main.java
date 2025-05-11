@@ -6,13 +6,16 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import javafx.geometry.Point2D;
 import org.ncu.fresh.core.entity.component.player.LevelComponent;
-import org.ncu.fresh.core.entity.constants.ItemDropProperties;
+import org.ncu.fresh.core.entity.constant.ItemDropProperties;
 import org.ncu.fresh.core.entity.factory.EnemyFactory;
 import org.ncu.fresh.core.entity.factory.PlayerFactory;
 import org.ncu.fresh.core.handler.entity.PickupHandler;
 import org.ncu.fresh.core.handler.entity.PlayerProjectileHandler;
 import org.ncu.fresh.core.utils.helper.PropertyHelper;
 import org.ncu.fresh.event.ItemPickedUpEvent;
+
+import static org.ncu.fresh.core.constant.ApplicationConfig.WINDOWS_HEIGHT;
+import static org.ncu.fresh.core.constant.ApplicationConfig.WINDOWS_WIDTH;
 
 public class Main extends GameApplication {
 
@@ -36,8 +39,8 @@ public class Main extends GameApplication {
 
     @Override
     protected void initSettings(GameSettings gameSettings) {
-        gameSettings.setWidth(800);
-        gameSettings.setHeight(640);
+        gameSettings.setWidth(WINDOWS_WIDTH);
+        gameSettings.setHeight(WINDOWS_HEIGHT);
         gameSettings.setTitle("Team Project");
     }
 

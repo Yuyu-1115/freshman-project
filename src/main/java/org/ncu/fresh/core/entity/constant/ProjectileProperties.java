@@ -1,4 +1,4 @@
-package org.ncu.fresh.core.entity.constants;
+package org.ncu.fresh.core.entity.constant;
 
 public class ProjectileProperties {
     public static final String DAMAGE = "damage";

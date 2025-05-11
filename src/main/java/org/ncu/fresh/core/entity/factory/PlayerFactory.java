@@ -10,8 +10,7 @@ import javafx.scene.shape.Rectangle;
 import org.ncu.fresh.core.entity.EntityType;
 import org.ncu.fresh.core.entity.component.BasicAttackComponent;
 import org.ncu.fresh.core.entity.component.player.LevelComponent;
-import org.ncu.fresh.core.entity.component.resourcebar.ExperienceBarComponent;
-import org.ncu.fresh.core.entity.component.resourcebar.HealthBarComponent;
+import org.ncu.fresh.core.entity.component.player.StatusBarComponent;
 import org.ncu.fresh.core.entity.component.player.PlayerComponent;
 import org.ncu.fresh.core.entity.helper.InitializationHelper;
 import org.ncu.fresh.core.handler.InputHandler;
@@ -26,9 +25,8 @@ public class PlayerFactory implements EntityFactory {
                 .with(new BasicAttackComponent(Color.RED))
                 .with(new PlayerComponent())
                 .with(new LevelComponent())
-                .with(new ExperienceBarComponent())
                 .with(new HealthDoubleComponent(500))
-                .with(new HealthBarComponent())
+                .with(new StatusBarComponent())
                 .collidable()
                 .buildAndAttach();
         InitializationHelper.initializePlayer(player);

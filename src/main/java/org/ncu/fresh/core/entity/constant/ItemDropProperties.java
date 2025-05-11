@@ -1,4 +1,4 @@
-package org.ncu.fresh.core.entity.constants;
+package org.ncu.fresh.core.entity.constant;
 
 public class ItemDropProperties {
     public static final String EXP_WORTH = "expWorth";

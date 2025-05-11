@@ -1,7 +1,7 @@
 package org.ncu.fresh.core.entity.component.player;
 
 import com.almasb.fxgl.entity.component.Component;
-import org.ncu.fresh.core.entity.constants.PlayerProperties;
+import org.ncu.fresh.core.entity.constant.PlayerProperties;
 import org.ncu.fresh.core.utils.helper.PropertyHelper;
 
 public class PlayerComponent extends Component {
