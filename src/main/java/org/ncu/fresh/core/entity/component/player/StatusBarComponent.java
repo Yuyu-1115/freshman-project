@@ -1,12 +1,15 @@
 package org.ncu.fresh.core.entity.component.player;
 
+import com.almasb.fxgl.animation.AnimationBuilder;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.HealthDoubleComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import org.ncu.fresh.core.constant.Color;
 import org.ncu.fresh.core.entity.EntityType;
 import org.ncu.fresh.core.entity.factory.ResourceBarFactory;
@@ -36,6 +39,7 @@ public class StatusBarComponent extends Component {
                 .buildAndAttach();
         healthBar = ResourceBarFactory.createHealthBar(new Point2D(HP_X_START, HP_Y_START), hpFill);
         experienceBar = ResourceBarFactory.createHealthBar(new Point2D(XP_X_START, XP_Y_START), expFill);
+        expFill.setViewport(new Rectangle2D(0, 0, 0, 0));
 
     }
 
@@ -59,4 +63,17 @@ public class StatusBarComponent extends Component {
         }
     }
 
+    public void levelUp() {
+        ColorAdjust colorAdjust = new ColorAdjust();
+        expFill.setEffect(colorAdjust);
+        FXGL.animationBuilder()
+                .repeat(10)
+                .autoReverse(true)
+                .duration(Duration.millis(100))
+                .animate(colorAdjust.hueProperty())
+                .from(0)
+                .to(1)
+                .buildAndPlay();
+        expFill.setEffect(null);
+    }
 }

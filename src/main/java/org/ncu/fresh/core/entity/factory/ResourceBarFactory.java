@@ -31,7 +31,6 @@ public class ResourceBarFactory implements EntityFactory {
                 .type(EntityType.DISPLAY)
                 .at(position)
                 .view(view)
-                .scale(0, 1)
                 .buildAndAttach();
     }
 }

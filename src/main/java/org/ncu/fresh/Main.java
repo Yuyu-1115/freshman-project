@@ -5,6 +5,7 @@ import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import javafx.geometry.Point2D;
+import javafx.scene.image.ImageView;
 import org.ncu.fresh.core.entity.component.player.LevelComponent;
 import org.ncu.fresh.core.entity.constant.ItemDropProperties;
 import org.ncu.fresh.core.entity.factory.EnemyFactory;
@@ -24,7 +25,7 @@ public class Main extends GameApplication {
         Entity player = PlayerFactory.createPlayer();
         for (int i = 0; i < 4; i++) {
             Point2D position = new Point2D(100 + i * 200, 100 + i * 100);
-            EnemyFactory.createEnemy(position, 100);
+            EnemyFactory.createEnemy(position, 100, new ImageView(FXGL.getAssetLoader().loadImage("slime.png")));
         }
         FXGL.getEventBus().addEventHandler(ItemPickedUpEvent.EXP,
                 itemPickedUpEvent -> player.getComponent(LevelComponent.class)

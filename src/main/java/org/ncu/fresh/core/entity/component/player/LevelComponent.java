@@ -6,7 +6,6 @@ import com.almasb.fxgl.entity.component.Component;
 import org.ncu.fresh.core.entity.component.EnemyComponent;
 
 public class LevelComponent extends Component {
-    private int[] experienceArray = {10, 20, 30, 200, 1000};
     private int level = 1;
     private int currentExperience = 0;
     private int experienceGained = 0;
@@ -14,10 +13,10 @@ public class LevelComponent extends Component {
     @Override
     public void onUpdate(double tpf) {
         if (canLevelUp()) {
-            currentExperience -= experienceArray[level - 1];
+            currentExperience -= level * 200;
             level += 1;
             entity.getComponent(HealthDoubleComponent.class).restorePercentageMax(50);
-            System.out.println("Level up!");
+            entity.getComponent(StatusBarComponent.class).levelUp();
         }
     }
 
@@ -27,7 +26,7 @@ public class LevelComponent extends Component {
     }
 
     public double getExpProgressPercent() {
-        return 100.0 * (double) currentExperience / experienceArray[level - 1];
+        return 100.0 * (double) currentExperience / (level * 200);
     }
 
     public void gainExperienceFrom(Entity enemy) {
@@ -37,6 +36,6 @@ public class LevelComponent extends Component {
     }
 
     private boolean canLevelUp() {
-        return currentExperience >= experienceArray[level - 1];
+        return currentExperience >= level * 200;
     }
 }

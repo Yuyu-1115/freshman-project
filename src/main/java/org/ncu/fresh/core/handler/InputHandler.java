@@ -23,6 +23,6 @@ public class InputHandler {
                 () -> player.getComponent(LevelComponent.class).giveExperience(5));
 
         FXGL.onKey(KeyCode.C,
-                () -> player.getComponent(HealthDoubleComponent.class).damage(20));
+                () -> player.getComponent(HealthDoubleComponent.class).damage(10));
     }
 }
