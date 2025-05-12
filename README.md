@@ -1,5 +1,5 @@
 # Freshman Project
-This is a project built for the course CE1004B（計算機概論）. We're attempting to make a game inspired from Vampire Survivors and Balatro. More details will be added as the project continues.
+This is a project built for the course CE1004B（計算機實習II）. We're attempting to make a game inspired from Vampire Survivors and Balatro. More details will be added as the project continues.
 ## Build From Source
 Currently, you have to build from source if you want to test out, run the following command to build/run the project:
 ```bash
