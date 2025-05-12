@@ -5,11 +5,13 @@ import com.almasb.fxgl.dsl.components.HealthDoubleComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import javafx.geometry.Point2D;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import org.ncu.fresh.core.entity.factory.ResourceBarFactory;
 
 public class HealthBarComponent extends Component {
     private static final double DISPLAY_TIME = 0.8f;
+
 
     private Entity healthBar;
     private double remainTimeToDisplay = 0;

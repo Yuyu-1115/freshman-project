@@ -28,6 +28,8 @@ public class ProjectileFactory implements EntityFactory {
                 .build();
         InitializationHelper.initializeProjectile(projectile, damage, speed, size, source);
 
+        projectile.setZ(-1);
+
         // Making Projectile won't collide with each other so that they won't interfere with each other
         projectile.getComponent(CollidableComponent.class).addIgnoredType(EntityType.PROJECTILE);
         projectile.getComponent(CollidableComponent.class).addIgnoredType(EntityType.PROJECTILE_PIERCING);

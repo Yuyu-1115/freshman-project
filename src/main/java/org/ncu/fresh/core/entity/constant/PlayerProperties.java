@@ -1,4 +1,4 @@
-package org.ncu.fresh.core.entity.constants;
+package org.ncu.fresh.core.entity.constant;
 
 public class PlayerProperties {
     // TODO: Add every data

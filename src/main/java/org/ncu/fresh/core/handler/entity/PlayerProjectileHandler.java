@@ -6,7 +6,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 import org.ncu.fresh.core.entity.EntityType;
 import org.ncu.fresh.core.entity.component.resourcebar.HealthBarComponent;
-import org.ncu.fresh.core.entity.constants.ProjectileProperties;
+import org.ncu.fresh.core.entity.constant.ProjectileProperties;
 import org.ncu.fresh.core.entity.factory.ItemDropFactory;
 import org.ncu.fresh.core.utils.helper.PropertyHelper;
 

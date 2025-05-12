@@ -3,11 +3,10 @@ package org.ncu.fresh.core.entity.helper;
 import com.almasb.fxgl.entity.Entity;
 import javafx.event.EventType;
 import org.ncu.fresh.core.entity.EntityType;
-import org.ncu.fresh.core.entity.constants.ItemDropProperties;
-import org.ncu.fresh.core.entity.constants.PlayerProperties;
-import org.ncu.fresh.core.entity.constants.ProjectileProperties;
+import org.ncu.fresh.core.entity.constant.ItemDropProperties;
+import org.ncu.fresh.core.entity.constant.PlayerProperties;
+import org.ncu.fresh.core.entity.constant.ProjectileProperties;
 import org.ncu.fresh.event.ItemPickedUpEvent;
-import org.w3c.dom.events.Event;
 
 public class InitializationHelper {
     public static void initializeItemDrop(Entity entity, int expWorth, int coinWorth) {
