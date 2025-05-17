@@ -24,5 +24,6 @@ public class InputHandler {
 
         FXGL.onKey(KeyCode.C,
                 () -> player.getComponent(HealthDoubleComponent.class).damage(10));
+
     }
 }

@@ -1,9 +1,8 @@
 package org.ncu.fresh.core.entity.component.player;
 
 import com.almasb.fxgl.dsl.components.HealthDoubleComponent;
-import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
-import org.ncu.fresh.core.entity.component.EnemyComponent;
+import org.ncu.fresh.gui.UIManager;
 
 public class LevelComponent extends Component {
     private int level = 1;
@@ -16,7 +15,7 @@ public class LevelComponent extends Component {
             currentExperience -= level * 200;
             level += 1;
             entity.getComponent(HealthDoubleComponent.class).restorePercentageMax(50);
-            entity.getComponent(StatusBarComponent.class).levelUp();
+            UIManager.levelUp();
         }
     }
 
@@ -29,11 +28,6 @@ public class LevelComponent extends Component {
         return 100.0 * (double) currentExperience / (level * 200);
     }
 
-    public void gainExperienceFrom(Entity enemy) {
-        int amount = enemy.getComponent(EnemyComponent.class).getExperienceDropped();
-        currentExperience += amount;
-        experienceGained += amount;
-    }
 
     private boolean canLevelUp() {
         return currentExperience >= level * 200;

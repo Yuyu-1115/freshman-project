@@ -3,6 +3,7 @@ package org.ncu.fresh.core.entity.component.player;
 import com.almasb.fxgl.entity.component.Component;
 import org.ncu.fresh.core.entity.constant.PlayerProperties;
 import org.ncu.fresh.core.utils.helper.PropertyHelper;
+import org.ncu.fresh.gui.UIManager;
 
 public class PlayerComponent extends Component {
     /*
@@ -24,5 +25,10 @@ public class PlayerComponent extends Component {
     }
     public void moveRight() {
         entity.translateX(movementSpeed());
+    }
+
+    @Override
+    public void onUpdate(double tpf) {
+        UIManager.updateBar();
     }
 }

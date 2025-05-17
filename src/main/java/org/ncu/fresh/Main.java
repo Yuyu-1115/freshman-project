@@ -11,9 +11,10 @@ import org.ncu.fresh.core.entity.constant.ItemDropProperties;
 import org.ncu.fresh.core.entity.factory.EnemyFactory;
 import org.ncu.fresh.core.entity.factory.PlayerFactory;
 import org.ncu.fresh.core.handler.entity.PickupHandler;
-import org.ncu.fresh.core.handler.entity.PlayerProjectileHandler;
+import org.ncu.fresh.core.handler.entity.ProjectileHandler;
 import org.ncu.fresh.core.utils.helper.PropertyHelper;
 import org.ncu.fresh.event.ItemPickedUpEvent;
+import org.ncu.fresh.gui.UIManager;
 
 import static org.ncu.fresh.core.constant.ApplicationConfig.WINDOWS_HEIGHT;
 import static org.ncu.fresh.core.constant.ApplicationConfig.WINDOWS_WIDTH;
@@ -24,7 +25,7 @@ public class Main extends GameApplication {
     protected void initGame() {
         Entity player = PlayerFactory.createPlayer();
         for (int i = 0; i < 4; i++) {
-            Point2D position = new Point2D(100 + i * 200, 100 + i * 100);
+            Point2D position = new Point2D(100 + i * 50, 100 + i * 50);
             EnemyFactory.createEnemy(position, 100, new ImageView(FXGL.getAssetLoader().loadImage("slime.png")));
         }
         FXGL.getEventBus().addEventHandler(ItemPickedUpEvent.EXP,
@@ -33,8 +34,13 @@ public class Main extends GameApplication {
     }
 
     @Override
+    protected void initUI() {
+        UIManager uiManager = new UIManager();
+    }
+
+    @Override
     protected void initPhysics() {
-        FXGL.getPhysicsWorld().addCollisionHandler(new PlayerProjectileHandler());
+        FXGL.getPhysicsWorld().addCollisionHandler(new ProjectileHandler());
         FXGL.getPhysicsWorld().addCollisionHandler(new PickupHandler());
     }
 

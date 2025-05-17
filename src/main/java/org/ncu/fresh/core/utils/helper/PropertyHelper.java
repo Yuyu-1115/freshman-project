@@ -13,6 +13,10 @@ public class PropertyHelper {
         return entity.getProperties().getDouble(property);
     }
 
+    public static boolean getBooleanPropery(Entity entity, String property) {
+        return entity.getProperties().getBoolean(property);
+    }
+
     public static String getStringProperty(Entity entity, String property) {
         return entity.getProperties().getString(property);
     }
