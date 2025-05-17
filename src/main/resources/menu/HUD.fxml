@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ncu.fresh.gui.ui.GameHUDUIController">
+   <children>
+      <ImageView fx:id="backgroundView" fitHeight="96.0" fitWidth="482.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/statBarBg.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hpFill" fitHeight="24.0" fitWidth="366.0" pickOnBounds="true" preserveRatio="true" x="86.0" y="36.0">
+         <image>
+            <Image url="@../assets/textures/statBarHPFill.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="expFill" fitHeight="10.0" fitWidth="348.0" pickOnBounds="true" preserveRatio="true" x="86.0" y="64.0">
+         <image>
+            <Image url="@../assets/textures/statBarXPFill.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

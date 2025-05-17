@@ -32,15 +32,14 @@ public class BasicAttackComponent extends Component {
         if (currentCooldown <= 0) {
             for (int i = 0; i < 4; i++) {
                 assert entity.getType().getClass() == EntityType.class;
-                Entity projectile = ProjectileFactory.createBullet(
+                Entity projectile = ProjectileFactory.createProjectile(
                         entity.getCenter(),
                         new Point2D(Math.cos(Math.PI * i / 2), -1 * Math.sin(Math.PI * i / 2)),
                         20,
                         20,
                         5,
-                        (EntityType) entity.getType(),
-                        color);
-                FXGL.getGameWorld().addEntity(projectile);
+                        color,
+                        false);
             }
             currentCooldown = ATTACK_COOLDOWN;
         }

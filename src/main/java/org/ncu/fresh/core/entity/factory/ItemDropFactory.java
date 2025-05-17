@@ -13,7 +13,6 @@ import org.ncu.fresh.event.ItemPickedUpEvent;
 
 public class ItemDropFactory implements EntityFactory {
 
-
     public static Entity createExperienceOrb(Point2D position, int expWorth) {
         Entity experienceOrb = FXGL.entityBuilder()
                 .type(EntityType.DROP)

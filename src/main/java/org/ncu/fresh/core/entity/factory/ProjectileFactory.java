@@ -18,22 +18,40 @@ public class ProjectileFactory implements EntityFactory {
     /*
     Create a new Projectile based on given position and direction
      */
-    public static Entity createBullet(Point2D position, Point2D direction, int damage, double speed, double size, EntityType source, Color color) {
+    public static Entity createProjectile(Point2D position, Point2D direction, int damage, double speed, double size, Color color, boolean isPiercing) {
         Entity projectile =  FXGL.entityBuilder()
                 .type(EntityType.PROJECTILE)
                 .at(position)
                 .view(new Circle(size, color))
                 .with(new ProjectileComponent(direction, speed))
                 .collidable()
-                .build();
-        InitializationHelper.initializeProjectile(projectile, damage, speed, size, source);
+                .buildAndAttach();
+        InitializationHelper.initializeProjectile(projectile, damage, speed, size, isPiercing);
 
         projectile.setZ(-1);
 
         // Making Projectile won't collide with each other so that they won't interfere with each other
         projectile.getComponent(CollidableComponent.class).addIgnoredType(EntityType.PROJECTILE);
-        projectile.getComponent(CollidableComponent.class).addIgnoredType(EntityType.PROJECTILE_PIERCING);
         projectile.getComponent(BoundingBoxComponent.class).addHitBox(new HitBox("body", BoundingShape.circle(size)));
+
+        return projectile;
+    }
+
+    public static Entity createRotatingProjectile(Point2D position, int damage, double speed, double size, boolean isPiercing) {
+        Entity projectile = FXGL.entityBuilder()
+                .type(EntityType.PROJECTILE)
+                .at(position)
+                .view(new Circle(size, Color.PURPLE))
+                .collidable()
+                .buildAndAttach();
+
+        InitializationHelper.initializeProjectile(projectile, damage, speed, size, isPiercing);
+
+        projectile.setZ(-1);
+
+        projectile.getComponent(CollidableComponent.class).addIgnoredType(EntityType.PROJECTILE);
+        projectile.getComponent(BoundingBoxComponent.class).addHitBox(new HitBox("body", BoundingShape.circle(size)));
+
         return projectile;
     }
 

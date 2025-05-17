@@ -10,16 +10,19 @@ import org.ncu.fresh.core.entity.constant.ProjectileProperties;
 import org.ncu.fresh.core.entity.factory.ItemDropFactory;
 import org.ncu.fresh.core.utils.helper.PropertyHelper;
 
-public class PlayerProjectileHandler extends CollisionHandler {
-    public PlayerProjectileHandler() {
+public class ProjectileHandler extends CollisionHandler {
+    public ProjectileHandler() {
         super(EntityType.PROJECTILE, EntityType.ENEMY);
     }
 
+
     @Override
-    protected void onCollision(Entity a, Entity b) {
+    protected void onCollisionBegin(Entity a, Entity b) {
         b.getComponent(HealthDoubleComponent.class).damage(PropertyHelper.getIntProperty(a, ProjectileProperties.DAMAGE));
         b.getComponent(HealthBarComponent.class).damage();
-        FXGL.getGameWorld().removeEntity(a);
+        if (!PropertyHelper.getBooleanPropery(a, ProjectileProperties.IS_PIERCING)) {
+            a.removeFromWorld();
+        }
         if (b.getComponent(HealthDoubleComponent.class).isZero()) {
             ItemDropFactory.createExperienceOrb(b.getPosition(), 10);
             FXGL.getGameWorld().removeEntity(b);

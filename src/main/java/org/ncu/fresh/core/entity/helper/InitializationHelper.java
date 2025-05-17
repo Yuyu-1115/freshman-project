@@ -36,10 +36,10 @@ public class InitializationHelper {
         entity.setProperty(PlayerProperties.MOVEMENT_SPEED, 5);
     }
 
-    public static void initializeProjectile(Entity entity, int damage, double speed, double size, EntityType source) {
+    public static void initializeProjectile(Entity entity, int damage, double speed, double size, boolean isPiercing) {
         entity.setProperty(ProjectileProperties.DAMAGE, damage);
         entity.setProperty(ProjectileProperties.SIZE, size);
         entity.setProperty(ProjectileProperties.SPEED, speed);
-        entity.setProperty(ProjectileProperties.SOURCE, source);
+        entity.setProperty(ProjectileProperties.IS_PIERCING, isPiercing);
     }
 }
