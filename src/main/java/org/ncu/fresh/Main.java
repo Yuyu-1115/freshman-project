@@ -16,10 +16,9 @@ import org.ncu.fresh.core.handler.entity.ProjectileHandler;
 import org.ncu.fresh.core.utils.helper.PropertyHelper;
 import org.ncu.fresh.event.ItemPickedUpEvent;
 import org.ncu.fresh.gui.UIManager;
-import org.ncu.fresh.gui.factory.UIFactory;
 
-import static org.ncu.fresh.core.constant.ApplicationConfig.WINDOWS_HEIGHT;
-import static org.ncu.fresh.core.constant.ApplicationConfig.WINDOWS_WIDTH;
+import static org.ncu.fresh.core.constant.Constant.WINDOWS_HEIGHT;
+import static org.ncu.fresh.core.constant.Constant.WINDOWS_WIDTH;
 
 public class Main extends GameApplication {
 

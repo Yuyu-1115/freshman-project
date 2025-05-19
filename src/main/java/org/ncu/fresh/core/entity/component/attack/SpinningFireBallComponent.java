@@ -2,7 +2,7 @@ package org.ncu.fresh.core.entity.component.attack;
 
 import org.ncu.fresh.core.entity.component.attack.base.SpinningProjectileComponent;
 
-import static org.ncu.fresh.core.constant.ApplicationConfig.TILE_SIZE;
+import static org.ncu.fresh.core.constant.Constant.TILE_SIZE;
 import static org.ncu.fresh.core.constant.weapon.WeaponId.SPINNING_FIREBALL;
 
 public class SpinningFireBallComponent extends SpinningProjectileComponent {

@@ -15,7 +15,7 @@ public class LevelComponent extends Component {
             currentExperience -= level * 200;
             level += 1;
             entity.getComponent(HealthDoubleComponent.class).restorePercentageMax(50);
-            UIManager.levelUp();
+            UIManager.levelUp(level);
         }
     }
 

@@ -21,6 +21,14 @@ public abstract class SpinningProjectileComponent extends Component {
 
     private double angle = 0;
 
+    /**
+     *
+     * @param assetName the name of the asset
+     * @param projectileNumber the number of projectiles there
+     * @param damage projectile damage
+     * @param rotationSpeed the degree projectile rotate per frame
+     * @param radius the distance from the projectile to the player
+     */
     public SpinningProjectileComponent(String assetName, int projectileNumber, int damage, double rotationSpeed, double radius) {
         this.assetName = assetName;
         this.projectileNumber = projectileNumber;
@@ -29,8 +37,8 @@ public abstract class SpinningProjectileComponent extends Component {
         this.damage = damage;
     }
 
-    /*
-    For every weapon, they have to scale in some way.
+    /**
+     * For every weapon, they have to scale in some way.
      */
     public abstract void levelUp();
 
@@ -41,9 +49,10 @@ public abstract class SpinningProjectileComponent extends Component {
         }
     }
 
-    /*
-    Keep the projectile rotating around the player
-     */
+    /**
+    * Keep the projectile rotating around the player
+    * @param tpf time per frame
+    */
     @Override
     public final void onUpdate(double tpf) {
         angle = (angle + rotationSpeed * tpf) % (Math.PI * 2);

@@ -1,6 +1,6 @@
 package org.ncu.fresh.core.constant;
 
-public class ApplicationConfig {
+public class Constant {
     /*
     Some constant used to prevent magic number
      */

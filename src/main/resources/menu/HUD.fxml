@@ -3,15 +3,17 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ncu.fresh.gui.ui.GameHUDUIController">
    <children>
-      <ImageView fitHeight="32.0" fitWidth="256.0" pickOnBounds="true" preserveRatio="true" smooth="false" x="16.0" y="32.0">
+      <ImageView fx:id="hpBackground" fitHeight="32.0" fitWidth="256.0" pickOnBounds="true" preserveRatio="true" smooth="false" x="16.0" y="32.0">
          <image>
             <Image url="@../assets/textures/ui/hud/hpBackground.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="32.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true" x="16.0" y="48.0">
+      <ImageView fitHeight="32.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true" x="16.0" y="48.0" fx:id="xpBackground">
          <image>
             <Image url="@../assets/textures/ui/hud/xpBackground.png" />
          </image>
@@ -21,70 +23,80 @@
             <Image url="@../assets/textures/ui/hud/hpFill.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="28.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" fx:id="xpFill">
+      <ImageView fitHeight="6.0" fitWidth="232.0" layoutX="28.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" fx:id="xpFill">
          <image>
             <Image url="@../assets/textures/ui/hud/xpFill.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="8.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="weaponSlot0" fitHeight="38.0" fitWidth="32.0" layoutX="8.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="48.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="weaponSlot1" fitHeight="38.0" fitWidth="32.0" layoutX="48.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="88.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="weaponSlot2" fitHeight="38.0" fitWidth="32.0" layoutX="88.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="8.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="weaponSlot3" fitHeight="38.0" fitWidth="32.0" layoutX="8.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="48.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="weaponSlot4" fitHeight="38.0" fitWidth="32.0" layoutX="48.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="88.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="weaponSlot5" fitHeight="38.0" fitWidth="32.0" layoutX="88.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="520.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="powerUpSlot0" fitHeight="38.0" fitWidth="32.0" layoutX="520.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="560.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="powerUpSlot1" fitHeight="38.0" fitWidth="32.0" layoutX="560.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="600.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="powerUpSlot2" fitHeight="38.0" fitWidth="32.0" layoutX="600.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="520.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="powerUpSlot3" fitHeight="38.0" fitWidth="32.0" layoutX="520.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="560.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="powerUpSlot4" fitHeight="38.0" fitWidth="32.0" layoutX="560.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="600.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="powerUpSlot5" fitHeight="38.0" fitWidth="32.0" layoutX="600.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
          </image>
       </ImageView>
+      <Text fx:id="level" fill="WHITE" layoutX="32.0" layoutY="30.0" stroke="#9badb7" strokeType="OUTSIDE" text="Lv.1">
+         <font>
+            <Font name="Alagard" size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="username" fill="WHITE" layoutX="97.0" layoutY="28.0" stroke="#9badb7" strokeType="OUTSIDE" text="player">
+         <font>
+            <Font name="Alagard" size="18.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
