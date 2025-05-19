@@ -6,20 +6,37 @@ import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.ncu.fresh.core.constant.Color;
 
 public class GameHUDUIController implements UIController {
-    @FXML
-    private ImageView hpFill;
-    @FXML
-    private ImageView xpFill;
+    @FXML private ImageView hpBackground;
+    @FXML private ImageView xpBackground;
+    @FXML private ImageView hpFill;
+    @FXML private ImageView xpFill;
+    @FXML private Text level;
+    @FXML private Text username;
+
+    @FXML private ImageView weaponSlot0;
+    @FXML private ImageView weaponSlot1;
+    @FXML private ImageView weaponSlot2;
+    @FXML private ImageView weaponSlot3;
+    @FXML private ImageView weaponSlot4;
+    @FXML private ImageView weaponSlot5;
+
+    @FXML private ImageView powerUpSlot0;
+    @FXML private ImageView powerUpSlot1;
+    @FXML private ImageView powerUpSlot2;
+    @FXML private ImageView powerUpSlot3;
+    @FXML private ImageView powerUpSlot4;
+    @FXML private ImageView powerUpSlot5;
 
     public void updateBar(double hpPercent, double xpPercent) {
 
         // FIXME: Fix the display of xpBar
-        hpFill.setViewport(new Rectangle2D(0, 0, hpFill.getImage().getWidth() * hpPercent, hpFill.getImage().getHeight()));
-        xpFill.setViewport(new Rectangle2D(0, 0, xpFill.getImage().getWidth() * xpPercent, xpFill.getImage().getHeight()));
+            hpFill.setViewport(new Rectangle2D(0, 0, hpFill.getImage().getWidth() * hpPercent, hpFill.getImage().getHeight()));
+            xpFill.setViewport(new Rectangle2D(0, 0, xpFill.getImage().getWidth() * xpPercent, xpFill.getImage().getHeight()));
 
         if (hpPercent <= 0.2) {
             hpFill.setEffect(Color.HP_RED);
@@ -32,7 +49,7 @@ public class GameHUDUIController implements UIController {
         }
     }
 
-    public void levelUp() {
+    public void levelUp(int currLevel) {
         ColorAdjust colorAdjust = new ColorAdjust();
         xpFill.setEffect(colorAdjust);
         FXGL.animationBuilder()
@@ -44,6 +61,16 @@ public class GameHUDUIController implements UIController {
                 .to(1)
                 .buildAndPlay();
         xpFill.setEffect(null);
+        level.setText("Lv." + currLevel);
+    }
+
+    public void toggleInfo() {
+        ImageView[] array = new ImageView[]{hpBackground, xpBackground, hpFill, xpFill};
+        for (int i = 0; i < 4; i++) {
+            array[i].setVisible(!array[i].isVisible());
+        }
+        level.setVisible(!level.isVisible());
+        username.setVisible(!username.isVisible());
     }
 
     @Override
