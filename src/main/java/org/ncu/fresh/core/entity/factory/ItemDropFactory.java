@@ -13,14 +13,14 @@ import org.ncu.fresh.event.ItemPickedUpEvent;
 
 public class ItemDropFactory implements EntityFactory {
 
-    public static Entity createExperienceOrb(Point2D position, int expWorth) {
+    public static Entity createExperienceOrb(Point2D position) {
         Entity experienceOrb = FXGL.entityBuilder()
                 .type(EntityType.DROP)
                 .at(position)
-                .view("expOrb.png")
+                .view("itemdrop/expOrb.png")
                 .collidable()
                 .buildAndAttach();
-        InitializationHelper.initializeItemDrop(experienceOrb, expWorth, 0, ItemPickedUpEvent.EXP);
+        InitializationHelper.initializeItemDrop(experienceOrb, 10, 0, ItemPickedUpEvent.EXP);
         experienceOrb.getComponent(BoundingBoxComponent.class).addHitBox(new HitBox(BoundingShape.circle(10)));
         return experienceOrb;
     }

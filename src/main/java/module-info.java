@@ -10,7 +10,8 @@ module org.ncu.fresh {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    exports org.ncu.fresh.core.entity.component;
+    exports org.ncu.fresh.core.entity.component.attack.base;
+    exports org.ncu.fresh.core.entity.component.attack.animation to com.almasb.fxgl.core;
     exports org.ncu.fresh to com.almasb.fxgl.core;
     exports org.ncu.fresh.core.entity to com.almasb.fxgl.core;
     exports org.ncu.fresh.event;
@@ -19,5 +20,7 @@ module org.ncu.fresh {
 
     // this solves the issue of texture not loading, but I don't really know why
     opens assets.textures;
+    opens assets.textures.projectile;
+    opens assets.textures.itemdrop;
 
 }

@@ -1,7 +1,9 @@
 package org.ncu.fresh.core.entity.factory;
 
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.components.OffscreenCleanComponent;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
+import com.almasb.fxgl.dsl.components.view.TrailParticleComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.components.BoundingBoxComponent;
@@ -12,6 +14,7 @@ import org.ncu.fresh.core.entity.EntityType;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import org.ncu.fresh.core.entity.component.attack.animation.NormalProjectileAnimationComponent;
 import org.ncu.fresh.core.entity.helper.InitializationHelper;
 
 public class ProjectileFactory implements EntityFactory {
@@ -23,6 +26,7 @@ public class ProjectileFactory implements EntityFactory {
                 .type(EntityType.PROJECTILE)
                 .at(position)
                 .view(new Circle(size, color))
+                .with(new OffscreenCleanComponent())
                 .with(new ProjectileComponent(direction, speed))
                 .collidable()
                 .buildAndAttach();
@@ -37,11 +41,14 @@ public class ProjectileFactory implements EntityFactory {
         return projectile;
     }
 
-    public static Entity createRotatingProjectile(Point2D position, int damage, double speed, double size, boolean isPiercing) {
+    /*
+    Create bullet that rotates around the player
+     */
+    public static Entity createRotatingProjectile(String assetName,Point2D position, int damage, double speed, double size, boolean isPiercing) {
         Entity projectile = FXGL.entityBuilder()
                 .type(EntityType.PROJECTILE)
                 .at(position)
-                .view(new Circle(size, Color.PURPLE))
+                .with(new NormalProjectileAnimationComponent(assetName, 4, 0))
                 .collidable()
                 .buildAndAttach();
 

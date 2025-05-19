@@ -10,11 +10,13 @@ import org.ncu.fresh.core.entity.component.player.LevelComponent;
 import org.ncu.fresh.core.entity.constant.ItemDropProperties;
 import org.ncu.fresh.core.entity.factory.EnemyFactory;
 import org.ncu.fresh.core.entity.factory.PlayerFactory;
+import org.ncu.fresh.core.entity.helper.ReferenceHelper;
 import org.ncu.fresh.core.handler.entity.PickupHandler;
 import org.ncu.fresh.core.handler.entity.ProjectileHandler;
 import org.ncu.fresh.core.utils.helper.PropertyHelper;
 import org.ncu.fresh.event.ItemPickedUpEvent;
 import org.ncu.fresh.gui.UIManager;
+import org.ncu.fresh.gui.factory.UIFactory;
 
 import static org.ncu.fresh.core.constant.ApplicationConfig.WINDOWS_HEIGHT;
 import static org.ncu.fresh.core.constant.ApplicationConfig.WINDOWS_WIDTH;
@@ -31,11 +33,13 @@ public class Main extends GameApplication {
         FXGL.getEventBus().addEventHandler(ItemPickedUpEvent.EXP,
                 itemPickedUpEvent -> player.getComponent(LevelComponent.class)
                         .giveExperience(PropertyHelper.getIntProperty(itemPickedUpEvent.getPickup(), ItemDropProperties.EXP_WORTH)));
+
     }
 
     @Override
     protected void initUI() {
         UIManager uiManager = new UIManager();
+        FXGL.getGameScene().getViewport().bindToEntity(ReferenceHelper.getPlayer(), WINDOWS_WIDTH / 2.0, WINDOWS_HEIGHT / 2.0);
     }
 
     @Override
@@ -48,6 +52,10 @@ public class Main extends GameApplication {
     protected void initSettings(GameSettings gameSettings) {
         gameSettings.setWidth(WINDOWS_WIDTH);
         gameSettings.setHeight(WINDOWS_HEIGHT);
+
+        gameSettings.setScaleAffectedOnResize(true);
+        gameSettings.setPreserveResizeRatio(true);
+        gameSettings.setManualResizeEnabled(true);
         gameSettings.setTitle("Team Project");
     }
 
