@@ -24,8 +24,12 @@ public class ProjectileHandler extends CollisionHandler {
             a.removeFromWorld();
         }
         if (b.getComponent(HealthDoubleComponent.class).isZero()) {
-            ItemDropFactory.createExperienceOrb(b.getPosition(), 10);
+            ItemDropFactory.createExperienceOrb(b.getPosition());
             FXGL.getGameWorld().removeEntity(b);
         }
+    }
+
+    private int calculateDamage(Entity projectile) {
+        return 0;
     }
 }

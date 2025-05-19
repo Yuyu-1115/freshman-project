@@ -1,23 +1,24 @@
-package org.ncu.fresh.core.entity.component;
+package org.ncu.fresh.core.entity.component.attack.base;
 
-import com.almasb.fxgl.dsl.FXGL;
-import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
-import org.ncu.fresh.core.entity.EntityType;
 import org.ncu.fresh.core.entity.factory.ProjectileFactory;
 
-public class BasicAttackComponent extends Component {
+public abstract class NormalProjectileComponent extends Component {
+    /*
+    This abstract class will shoot bullet in projectiles direction.
+    projectiles are distributed equally and are determined by the number of projectiles shown at the same time.
+     */
 
-    private final double ATTACK_COOLDOWN = 1.5;
+    private final double ATTACK_COOLDOWN;
     private double currentCooldown = 0;
-    private Color color;
 
-    public BasicAttackComponent(Color color) {
-        this.color = color;
+    public NormalProjectileComponent(double coolDown) {
+        this.ATTACK_COOLDOWN = coolDown;
     }
 
+    // TODO: make this more generalized so it can be used by subclasses, and possibly make it won't auto fire
     @Override
     public void onUpdate(double tpf) {
         if (currentCooldown > 0) {
@@ -28,17 +29,16 @@ public class BasicAttackComponent extends Component {
         }
     }
 
-    public void attack() {
+    public final void attack() {
         if (currentCooldown <= 0) {
             for (int i = 0; i < 4; i++) {
-                assert entity.getType().getClass() == EntityType.class;
-                Entity projectile = ProjectileFactory.createProjectile(
+                ProjectileFactory.createProjectile(
                         entity.getCenter(),
                         new Point2D(Math.cos(Math.PI * i / 2), -1 * Math.sin(Math.PI * i / 2)),
                         20,
                         20,
                         5,
-                        color,
+                        Color.AZURE,
                         false);
             }
             currentCooldown = ATTACK_COOLDOWN;

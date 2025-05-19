@@ -33,7 +33,7 @@ public class InitializationHelper {
         entity.setProperty(PlayerProperties.MAGIC_RESISTANCE, 10);
         entity.setProperty(PlayerProperties.ARMOR_PENETRATION, 10);
         entity.setProperty(PlayerProperties.MAGIC_PENETRATION, 10);
-        entity.setProperty(PlayerProperties.MOVEMENT_SPEED, 5);
+        entity.setProperty(PlayerProperties.MOVEMENT_SPEED, 3);
     }
 
     public static void initializeProjectile(Entity entity, int damage, double speed, double size, boolean isPiercing) {
