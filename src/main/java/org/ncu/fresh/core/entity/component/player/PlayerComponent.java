@@ -26,6 +26,9 @@ public class PlayerComponent extends Component {
     public void moveRight() {
         entity.translateX(movementSpeed());
     }
+    public void addComponent() {
+
+    }
 
     @Override
     public void onUpdate(double tpf) {

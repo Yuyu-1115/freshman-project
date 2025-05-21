@@ -1,7 +1,11 @@
 package org.ncu.fresh.core.constant.weapon;
 
+import com.almasb.fxgl.entity.component.Component;
+
+import java.util.function.Supplier;
+
 public enum WeaponId {
-    SPINNING_FIREBALL("spinningFireBall", "spinningFireball.png");
+    INFERNAL_WHEEL("infernalWheel", "infernalWheel.png");
 
     private final String id;
     private final String assetName;

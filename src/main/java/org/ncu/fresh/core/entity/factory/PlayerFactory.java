@@ -8,7 +8,7 @@ import com.almasb.fxgl.entity.Spawns;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import org.ncu.fresh.core.entity.EntityType;
-import org.ncu.fresh.core.entity.component.attack.SpinningFireBallComponent;
+import org.ncu.fresh.core.entity.component.attack.InfernalWheelComponent;
 import org.ncu.fresh.core.entity.component.player.LevelComponent;
 import org.ncu.fresh.core.entity.component.player.PlayerComponent;
 import org.ncu.fresh.core.entity.helper.InitializationHelper;
@@ -23,7 +23,7 @@ public class PlayerFactory implements EntityFactory {
                 .at(400, 300, -1)
                 .viewWithBBox(new Rectangle(20, 20, Color.BLUE))
                 .with(new PlayerComponent())
-                .with(new SpinningFireBallComponent())
+                .with(new InfernalWheelComponent())
                 .with(new LevelComponent())
                 .with(new HealthDoubleComponent(500))
                 .collidable()
