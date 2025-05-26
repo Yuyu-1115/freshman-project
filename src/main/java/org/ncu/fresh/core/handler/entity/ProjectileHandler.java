@@ -8,7 +8,7 @@ import org.ncu.fresh.core.entity.EntityType;
 import org.ncu.fresh.core.entity.component.resourcebar.HealthBarComponent;
 import org.ncu.fresh.core.entity.constant.ProjectileProperties;
 import org.ncu.fresh.core.entity.factory.ItemDropFactory;
-import org.ncu.fresh.core.utils.helper.PropertyHelper;
+import org.ncu.fresh.core.utils.PropertyHelper;
 
 public class ProjectileHandler extends CollisionHandler {
     public ProjectileHandler() {

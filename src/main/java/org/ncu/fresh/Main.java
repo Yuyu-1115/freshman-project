@@ -13,7 +13,7 @@ import org.ncu.fresh.core.entity.factory.PlayerFactory;
 import org.ncu.fresh.core.entity.helper.ReferenceHelper;
 import org.ncu.fresh.core.handler.entity.PickupHandler;
 import org.ncu.fresh.core.handler.entity.ProjectileHandler;
-import org.ncu.fresh.core.utils.helper.PropertyHelper;
+import org.ncu.fresh.core.utils.PropertyHelper;
 import org.ncu.fresh.event.ItemPickedUpEvent;
 import org.ncu.fresh.gui.UIManager;
 

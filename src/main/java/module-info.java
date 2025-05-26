@@ -9,6 +9,8 @@ module org.ncu.fresh {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.desktop;
+    requires com.fasterxml.jackson.databind;
 
     exports org.ncu.fresh.core.entity.component.attack.base;
     exports org.ncu.fresh.core.entity.component.attack.animation to com.almasb.fxgl.core;

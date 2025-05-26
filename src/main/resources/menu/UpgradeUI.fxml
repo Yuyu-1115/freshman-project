@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ncu.fresh.gui.ui.UpgradeUIController">
    <children>
-      <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="106.0" layoutY="66.0" mnemonicParsing="false" stylesheets="@../assets/ui/css/uiElement.css">
+      <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="106.0" layoutY="66.0" mnemonicParsing="false" stylesheets="@../assets/ui/css/uiElement.css">
          <graphic>
             <ImageView fitHeight="196.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -16,6 +16,7 @@
             </ImageView>
          </graphic>
       </Button>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="154.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" />
       <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="261.0" layoutY="66.0" mnemonicParsing="false" stylesheets="@../assets/ui/css/uiElement.css">
          <graphic>
             <ImageView fitHeight="196.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
@@ -25,6 +26,7 @@
             </ImageView>
          </graphic>
       </Button>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="309.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" />
       <Button alignment="CENTER" contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="415.0" layoutY="66.0" mnemonicParsing="false" stylesheets="@../assets/ui/css/uiElement.css">
          <graphic>
             <ImageView fitHeight="196.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true">
@@ -34,5 +36,6 @@
             </ImageView>
          </graphic>
       </Button>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="464.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

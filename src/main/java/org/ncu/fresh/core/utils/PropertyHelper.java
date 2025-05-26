@@ -1,4 +1,4 @@
-package org.ncu.fresh.core.utils.helper;
+package org.ncu.fresh.core.utils;
 
 
 import com.almasb.fxgl.entity.Entity;

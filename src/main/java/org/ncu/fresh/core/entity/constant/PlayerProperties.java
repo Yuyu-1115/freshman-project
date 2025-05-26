@@ -18,8 +18,5 @@ public class PlayerProperties {
     public static final String ARMOR_PENETRATION = "armorPenetration";
     public static final String MAGIC_PENETRATION = "magicPenetration";
 
-    public static final String ARMOR = "armor";
-    public static final String MAGIC_RESISTANCE = "magicResistance";
-
     public static final String MOVEMENT_SPEED = "movementSpeed";
 }

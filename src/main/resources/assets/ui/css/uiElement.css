@@ -17,5 +17,8 @@
 .button:hover {
     -fx-background-color: transparent;
     -fx-translate-y: -20;
-    transition-duration: 0.3s;
+}
+
+Text {
+    -fx-translate-y: -20;
 }

@@ -5,7 +5,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 import org.ncu.fresh.core.entity.EntityType;
 import org.ncu.fresh.core.entity.constant.ItemDropProperties;
-import org.ncu.fresh.core.utils.helper.PropertyHelper;
+import org.ncu.fresh.core.utils.PropertyHelper;
 
 public class PickupHandler extends CollisionHandler {
     public PickupHandler() {
