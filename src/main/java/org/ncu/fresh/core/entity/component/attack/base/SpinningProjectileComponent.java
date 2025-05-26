@@ -45,7 +45,7 @@ public abstract class SpinningProjectileComponent extends Component {
     @Override
     public final void onAdded() {
         for (int i = 0; i < projectileNumber; i++) {
-            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName,entity.getPosition(), damage, rotationSpeed, 5, true));
+            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName, entity.getPosition(), damage, rotationSpeed, 5, true));
         }
     }
 
@@ -65,5 +65,15 @@ public abstract class SpinningProjectileComponent extends Component {
 
     public int getLevel() {
         return level;
+    }
+
+    protected void reinitializeProjectile() {
+        for (var proj: projectileList) {
+            proj.removeFromWorld();
+        }
+        projectileList.clear();
+        for (int i = 0; i < projectileNumber; i++) {
+            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName, entity.getPosition(), damage, rotationSpeed, 5, true));
+        }
     }
 }
