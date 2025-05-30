@@ -73,6 +73,10 @@ public class GameHUDUIController implements UIController {
         username.setVisible(!username.isVisible());
     }
 
+    public void updateInventory() {
+
+    }
+
     @Override
     public void init() {
     }

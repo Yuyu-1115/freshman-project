@@ -14,11 +14,17 @@
     -fx-faint-focus-color: transparent;
 }
 
-.button:hover {
+AnchorPane:hover {
     -fx-background-color: transparent;
     -fx-translate-y: -20;
 }
 
-Text {
-    -fx-translate-y: -20;
+.skillName {
+    -fx-alignment: center;
+    -fx-text-fill: #FFFFFF;
+}
+
+.skillDesc {
+    -fx-wrap-text: true;
+    -fx-text-fill: #FFFFFF;
 }

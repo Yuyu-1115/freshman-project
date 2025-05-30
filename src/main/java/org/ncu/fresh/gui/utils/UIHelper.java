@@ -13,7 +13,7 @@ import org.ncu.fresh.core.utils.WeaponHelper;
 import org.ncu.fresh.gui.UIManager;
 
 
-public class UIFactory {
+public class UIHelper {
     private static final Image upgradeChoice = FXGL.getAssetLoader().loadImage("ui/upgrade/upgradeChoice.png");
 
     public static void createUpgradeOption(WeaponData id, AnchorPane buttonView) {
@@ -54,7 +54,7 @@ public class UIFactory {
         skillName.setPrefWidth(96);
 
         skillDesc.getStyleClass().add("skillDesc");
-        skillDesc.setFont(FontHelper.shareTechMono(7));
+        skillDesc.setFont(FontHelper.alagard(7));
         skillDesc.setLayoutX(16);
         skillDesc.setLayoutY(96);
         skillDesc.setPrefWidth(96);
