@@ -26,8 +26,6 @@ public class InputHandler {
         FXGL.onKey(KeyCode.C,
                 () -> player.getComponent(HealthDoubleComponent.class).damage(10));
 
-        FXGL.onKeyDown(KeyCode.Q,
-                () -> player.getComponent(InfernalWheelComponent.class).levelUp());
 
     }
 }

@@ -5,7 +5,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import org.ncu.fresh.core.entity.factory.ProjectileFactory;
 
-public abstract class NormalProjectileComponent extends Component {
+public abstract class NormalProjectileComponent extends Component implements Weapon{
     /*
     This abstract class will shoot bullet in projectiles direction.
     projectiles are distributed equally and are determined by the number of projectiles shown at the same time.

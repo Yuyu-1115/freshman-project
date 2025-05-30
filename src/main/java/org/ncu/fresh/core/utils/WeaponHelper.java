@@ -1,5 +1,8 @@
 package org.ncu.fresh.core.utils;
 
+import com.almasb.fxgl.dsl.FXGL;
+import javafx.scene.image.Image;
+
 import java.util.ResourceBundle;
 
 public class WeaponHelper {
@@ -19,5 +22,9 @@ public class WeaponHelper {
 
     public static String getAssetName(String id) {
         return "projectile/" + id + ".png";
+    }
+
+    public static Image getIcon(String id) {
+        return FXGL.getAssetLoader().loadImage("icon/" + id + ".png");
     }
 }

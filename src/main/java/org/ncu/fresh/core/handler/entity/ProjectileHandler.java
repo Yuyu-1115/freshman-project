@@ -20,7 +20,7 @@ public class ProjectileHandler extends CollisionHandler {
     protected void onCollisionBegin(Entity a, Entity b) {
         b.getComponent(HealthDoubleComponent.class).damage(PropertyHelper.getIntProperty(a, ProjectileProperties.DAMAGE));
         b.getComponent(HealthBarComponent.class).damage();
-        if (!PropertyHelper.getBooleanPropery(a, ProjectileProperties.IS_PIERCING)) {
+        if (!PropertyHelper.getBooleanProperty(a, ProjectileProperties.IS_PIERCING)) {
             a.removeFromWorld();
         }
         if (b.getComponent(HealthDoubleComponent.class).isZero()) {
