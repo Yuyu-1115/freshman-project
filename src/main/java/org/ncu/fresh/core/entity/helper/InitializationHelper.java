@@ -30,9 +30,6 @@ public class InitializationHelper {
         entity.setProperty(PlayerProperties.CRITICAL_DAMAGE, 10);
         entity.setProperty(PlayerProperties.ATTACK_SPEED, 10);
 
-        entity.setProperty(PlayerProperties.MAGIC_RESISTANCE, 10);
-        entity.setProperty(PlayerProperties.ARMOR_PENETRATION, 10);
-        entity.setProperty(PlayerProperties.MAGIC_PENETRATION, 10);
         entity.setProperty(PlayerProperties.MOVEMENT_SPEED, 3);
     }
 

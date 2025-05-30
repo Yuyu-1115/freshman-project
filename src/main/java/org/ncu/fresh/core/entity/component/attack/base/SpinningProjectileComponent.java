@@ -1,13 +1,15 @@
 package org.ncu.fresh.core.entity.component.attack.base;
 
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import javafx.geometry.Point2D;
+import org.ncu.fresh.core.constant.WeaponData;
 import org.ncu.fresh.core.entity.factory.ProjectileFactory;
 
 import java.util.ArrayList;
 
-public abstract class SpinningProjectileComponent extends Component {
+public abstract class SpinningProjectileComponent extends Component implements Weapon {
     /*
     This Component create projectiles that rotates around the entity it attaches to
      */
@@ -37,17 +39,25 @@ public abstract class SpinningProjectileComponent extends Component {
         this.damage = damage;
     }
 
+
+
     /**
-     * For every weapon, they have to scale in some way.
-     */
+    * For every weapon, they have to scale in some way.
+    * Also, we need a way to retrieve weaponData from component
+    */
     public abstract void levelUp();
+    public abstract WeaponData getWeaponData();
+    public int getLevel() {
+        return level;
+    }
 
     @Override
     public final void onAdded() {
         for (int i = 0; i < projectileNumber; i++) {
-            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName,entity.getPosition(), damage, rotationSpeed, 5, true));
+            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName, entity.getPosition(), damage, rotationSpeed, 5, true));
         }
     }
+
 
     /**
     * Keep the projectile rotating around the player
@@ -55,6 +65,9 @@ public abstract class SpinningProjectileComponent extends Component {
     */
     @Override
     public final void onUpdate(double tpf) {
+        if (FXGL.getWorldProperties().getBoolean("isPaused")) {
+            return;
+        }
         angle = (angle + rotationSpeed * tpf) % (Math.PI * 2);
         double diff = Math.PI * 2 / projectileNumber;
         Point2D center = entity.getCenter();
@@ -63,7 +76,16 @@ public abstract class SpinningProjectileComponent extends Component {
         }
     }
 
-    public int getLevel() {
-        return level;
+
+
+    protected void reinitializeProjectile() {
+        for (var proj: projectileList) {
+            proj.removeFromWorld();
+        }
+        projectileList.clear();
+        for (int i = 0; i < projectileNumber; i++) {
+            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName, entity.getPosition(), damage, rotationSpeed, 5, true));
+        }
     }
+
 }

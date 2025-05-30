@@ -6,7 +6,10 @@ import com.almasb.fxgl.texture.AnimatedTexture;
 import com.almasb.fxgl.texture.AnimationChannel;
 import javafx.geometry.Point2D;
 import javafx.util.Duration;
+import org.ncu.fresh.core.constant.Constant;
 import org.ncu.fresh.core.entity.EntityType;
+
+import static org.ncu.fresh.core.constant.Constant.TILE_SIZE;
 
 public class NormalProjectileAnimationComponent extends Component {
     private final AnimatedTexture texture;
@@ -17,8 +20,8 @@ public class NormalProjectileAnimationComponent extends Component {
     Load the asset
      */
     public NormalProjectileAnimationComponent(String assetName, int normFrame, int onHitFrame) {
-        animNorm = new AnimationChannel(FXGL.image(assetName), normFrame + onHitFrame, 16, 16, Duration.seconds(0.25), 0, normFrame - 1);
-        animOnHit = new AnimationChannel(FXGL.image(assetName), normFrame + onHitFrame, 16, 16, Duration.seconds(0.25), normFrame, normFrame + onHitFrame - 1);
+        animNorm = new AnimationChannel(FXGL.image(assetName), normFrame + onHitFrame, TILE_SIZE, TILE_SIZE, Duration.seconds(0.25), 0, normFrame - 1);
+        animOnHit = new AnimationChannel(FXGL.image(assetName), normFrame + onHitFrame, TILE_SIZE, TILE_SIZE, Duration.seconds(0.25), normFrame, normFrame + onHitFrame - 1);
         texture = new AnimatedTexture(animNorm);
     }
 
@@ -27,7 +30,7 @@ public class NormalProjectileAnimationComponent extends Component {
      */
     @Override
     public void onAdded() {
-        entity.setScaleOrigin(new Point2D(8, 8));
+        entity.setScaleOrigin(new Point2D(TILE_SIZE / 2.0, TILE_SIZE / 2.0));
         entity.getViewComponent().addChild(texture);
         texture.loopAnimationChannel(animNorm);
         /*

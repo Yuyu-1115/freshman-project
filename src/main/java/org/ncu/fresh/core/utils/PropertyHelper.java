@@ -1,4 +1,4 @@
-package org.ncu.fresh.core.utils.helper;
+package org.ncu.fresh.core.utils;
 
 
 import com.almasb.fxgl.entity.Entity;
@@ -13,7 +13,7 @@ public class PropertyHelper {
         return entity.getProperties().getDouble(property);
     }
 
-    public static boolean getBooleanPropery(Entity entity, String property) {
+    public static boolean getBooleanProperty(Entity entity, String property) {
         return entity.getProperties().getBoolean(property);
     }
 

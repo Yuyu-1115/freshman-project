@@ -8,7 +8,7 @@ import org.ncu.fresh.core.entity.EntityType;
 import org.ncu.fresh.core.entity.component.resourcebar.HealthBarComponent;
 import org.ncu.fresh.core.entity.constant.ProjectileProperties;
 import org.ncu.fresh.core.entity.factory.ItemDropFactory;
-import org.ncu.fresh.core.utils.helper.PropertyHelper;
+import org.ncu.fresh.core.utils.PropertyHelper;
 
 public class ProjectileHandler extends CollisionHandler {
     public ProjectileHandler() {
@@ -20,7 +20,7 @@ public class ProjectileHandler extends CollisionHandler {
     protected void onCollisionBegin(Entity a, Entity b) {
         b.getComponent(HealthDoubleComponent.class).damage(PropertyHelper.getIntProperty(a, ProjectileProperties.DAMAGE));
         b.getComponent(HealthBarComponent.class).damage();
-        if (!PropertyHelper.getBooleanPropery(a, ProjectileProperties.IS_PIERCING)) {
+        if (!PropertyHelper.getBooleanProperty(a, ProjectileProperties.IS_PIERCING)) {
             a.removeFromWorld();
         }
         if (b.getComponent(HealthDoubleComponent.class).isZero()) {

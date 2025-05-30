@@ -13,9 +13,11 @@ import org.ncu.fresh.core.entity.factory.PlayerFactory;
 import org.ncu.fresh.core.entity.helper.ReferenceHelper;
 import org.ncu.fresh.core.handler.entity.PickupHandler;
 import org.ncu.fresh.core.handler.entity.ProjectileHandler;
-import org.ncu.fresh.core.utils.helper.PropertyHelper;
+import org.ncu.fresh.core.utils.PropertyHelper;
 import org.ncu.fresh.event.ItemPickedUpEvent;
 import org.ncu.fresh.gui.UIManager;
+
+import java.util.Map;
 
 import static org.ncu.fresh.core.constant.Constant.WINDOWS_HEIGHT;
 import static org.ncu.fresh.core.constant.Constant.WINDOWS_WIDTH;
@@ -48,6 +50,11 @@ public class Main extends GameApplication {
     }
 
     @Override
+    protected void initGameVars(Map<String, Object> vars) {
+        vars.put("isPaused", false);
+    }
+
+    @Override
     protected void initSettings(GameSettings gameSettings) {
         gameSettings.setWidth(WINDOWS_WIDTH);
         gameSettings.setHeight(WINDOWS_HEIGHT);
@@ -56,6 +63,7 @@ public class Main extends GameApplication {
         gameSettings.setPreserveResizeRatio(true);
         gameSettings.setManualResizeEnabled(true);
         gameSettings.setTitle("Team Project");
+
     }
 
     public static void main(String[] args) {
