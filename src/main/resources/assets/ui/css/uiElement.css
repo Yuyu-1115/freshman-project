@@ -14,7 +14,7 @@
     -fx-faint-focus-color: transparent;
 }
 
-AnchorPane:hover {
+.upgradeOption:hover {
     -fx-background-color: transparent;
     -fx-translate-y: -20;
 }
@@ -22,9 +22,19 @@ AnchorPane:hover {
 .skillName {
     -fx-alignment: center;
     -fx-text-fill: #FFFFFF;
+    -fx-pref-width: 96px;
 }
 
 .skillDesc {
     -fx-wrap-text: true;
     -fx-text-fill: #FFFFFF;
+    -fx-pref-width: 96px;
+    -fx-max-height: 96px;
+}
+
+.skillLevel {
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-text-fill: #FFFFFF;
+    -fx-pref-width: 4px;
 }

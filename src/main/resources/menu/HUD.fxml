@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ncu.fresh.gui.ui.GameHUDUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" stylesheets="@../assets/ui/css/uiElement.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ncu.fresh.gui.ui.GameHUDUIController">
    <children>
       <ImageView fx:id="hpBackground" fitHeight="32.0" fitWidth="256.0" pickOnBounds="true" preserveRatio="true" smooth="false" x="16.0" y="32.0">
          <image>
@@ -98,5 +99,27 @@
             <Font name="Alagard" size="18.0" />
          </font>
       </Text>
+      <ImageView fx:id="weapon0" fitHeight="16.0" fitWidth="16.0" layoutX="16.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="weapon1" fitHeight="16.0" fitWidth="16.0" layoutX="56.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="weapon2" fitHeight="16.0" fitWidth="16.0" layoutX="96.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="weapon3" fitHeight="16.0" fitWidth="16.0" layoutX="16.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="weapon4" fitHeight="16.0" fitWidth="16.0" layoutX="56.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="weapon5" fitHeight="16.0" fitWidth="16.0" layoutX="96.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="powerUp0" fitHeight="16.0" fitWidth="16.0" layoutX="528.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="powerUp1" fitHeight="16.0" fitWidth="16.0" layoutX="568.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="powerUp2" fitHeight="16.0" fitWidth="16.0" layoutX="608.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="powerUp3" fitHeight="16.0" fitWidth="16.0" layoutX="528.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="powerUp4" fitHeight="16.0" fitWidth="16.0" layoutX="568.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="powerUp5" fitHeight="16.0" fitWidth="16.0" layoutX="608.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="weaponLevel0" layoutX="19.0" layoutY="299.0" styleClass="skillLevel">
+         <font>
+            <Font name="Share Tech Mono" size="6.0" />
+         </font>
+      </Label>
+      <Label fx:id="weaponLevel1" layoutX="62.5" layoutY="299.0" styleClass="skillLevel" />
+      <Label fx:id="weaponLevel2" layoutX="101.6" layoutY="299.0" styleClass="skillLevel" />
+      <Label fx:id="weaponLevel3" layoutX="23.0" layoutY="343.0" styleClass="skillLevel" />
+      <Label fx:id="weaponLevel4" layoutX="63.0" layoutY="343.0" styleClass="skillLevel" />
+      <Label fx:id="weaponLevel5" layoutX="103.0" layoutY="343.0" styleClass="skillLevel" />
    </children>
 </AnchorPane>

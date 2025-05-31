@@ -16,8 +16,8 @@ public class PlayerComponent extends Component {
     Contain every basic data and behaviour related to the player
      */
 
-    private final ArrayList<Component> weaponOwned = new ArrayList<>(6);
-    private final ArrayList<Component> powerUpOwned = new ArrayList<>(6);
+    private final ArrayList<Component> weaponOwned = new ArrayList<>();
+    private final ArrayList<Component> powerUpOwned = new ArrayList<>();
 
     private int movementSpeed() {
         return PropertyHelper.getIntProperty(entity, PlayerProperties.MOVEMENT_SPEED);
@@ -67,7 +67,11 @@ public class PlayerComponent extends Component {
         powerUpOwned.addLast(powerUp);
     }
 
-    public ArrayList<WeaponData> checkInventory() {
-        return new ArrayList<>();
+    public ArrayList<Component> getWeaponOwned() {
+        return weaponOwned;
+    }
+
+    public ArrayList<Component> getPowerUpOwned() {
+        return powerUpOwned;
     }
 }
