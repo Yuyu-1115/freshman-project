@@ -20,7 +20,6 @@ public class EnemyFactory implements EntityFactory {
                 .at(position)
                 .with(new HealthDoubleComponent(maxHealth))
                 .with(new HealthBarComponent())
-                .with(new LevelComponent())
                 .with(new EnemyComponent())
                 .viewWithBBox(imageView)
                 .collidable()
