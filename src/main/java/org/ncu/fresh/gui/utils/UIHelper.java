@@ -46,7 +46,7 @@ public class UIHelper {
         button.setLayoutY(0);
         button.setPrefSize(128, 196);
 
-        buttonView.setPrefSize(128, 106);
+        buttonView.setPrefSize(128, 196);
 
         // some constant for alignment
         background.setLayoutX(0);

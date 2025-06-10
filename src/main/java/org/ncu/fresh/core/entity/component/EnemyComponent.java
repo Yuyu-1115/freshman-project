@@ -35,7 +35,6 @@ public class EnemyComponent extends Component {
         Point2D velocity = ReferenceHelper.getPlayer().getPosition().subtract(entity.getPosition()).normalize();
         Point2D rangePosition = getEntity().getCenter().add(-(double) TILE_SIZE, -(double) TILE_SIZE);
         List<Entity> neighbours = FXGL.getGameWorld().getEntitiesInRange(new Rectangle2D(rangePosition.getX(), rangePosition.getY(), 2 * (double) TILE_SIZE, 2 * (double) TILE_SIZE));
-        System.out.println(neighbours.size());
         Point2D weightedRepulsion = Point2D.ZERO;
         for (Entity neighbour: neighbours) {
             // the weight is the reciprocals of the distance (1/L)
@@ -47,6 +46,7 @@ public class EnemyComponent extends Component {
             weightedRepulsion = weightedRepulsion.add(repulsionVector);
         }
         // take the weighted sum and then normalize
+        // TODO: the weight need to be adjusted more
         Point2D finalDirection = velocity.multiply(0.1).add(weightedRepulsion.multiply(2)).normalize();
 
         getEntity().setPosition(getEntity().getPosition().add(finalDirection.multiply(speed * tpf)));
