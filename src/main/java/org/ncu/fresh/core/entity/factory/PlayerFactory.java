@@ -10,6 +10,7 @@ import javafx.scene.shape.Rectangle;
 import org.ncu.fresh.core.entity.EntityType;
 import org.ncu.fresh.core.entity.component.attack.AquaCutterComponent;
 import org.ncu.fresh.core.entity.component.attack.InfernalWheelComponent;
+import org.ncu.fresh.core.entity.component.attack.TestComponent;
 import org.ncu.fresh.core.entity.component.attack.WindBladeComponent;
 import org.ncu.fresh.core.entity.component.player.LevelComponent;
 import org.ncu.fresh.core.entity.component.player.PlayerComponent;
@@ -26,6 +27,7 @@ public class PlayerFactory implements EntityFactory {
                 .viewWithBBox(new Rectangle(20, 20, Color.BLUE))
                 .with(new PlayerComponent())
                 .with(new LevelComponent())
+                .with(new TestComponent())
                 .with(new HealthDoubleComponent(500))
                 .collidable()
                 .buildAndAttach();
