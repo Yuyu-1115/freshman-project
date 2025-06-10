@@ -4,8 +4,8 @@
 
 <AnchorPane prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ncu.fresh.gui.ui.UpgradeUIController">
    <children>
-      <AnchorPane fx:id="option1" layoutX="106.0" layoutY="64.0" prefHeight="196.0" prefWidth="128.0" stylesheets="@../assets/ui/css/uiElement.css" />
-      <AnchorPane fx:id="option2" layoutX="256.0" layoutY="64.0" prefHeight="196.0" prefWidth="128.0" stylesheets="@../assets/ui/css/uiElement.css" />
-      <AnchorPane fx:id="option3" layoutX="406.0" layoutY="64.0" prefHeight="196.0" prefWidth="128.0" stylesheets="@../assets/ui/css/uiElement.css" />
+      <AnchorPane fx:id="option1" layoutX="106.0" layoutY="64.0" prefHeight="196.0" prefWidth="128.0" styleClass="upgradeOption" stylesheets="@../assets/ui/css/uiElement.css" />
+      <AnchorPane fx:id="option2" layoutX="256.0" layoutY="64.0" prefHeight="196.0" prefWidth="128.0" styleClass="upgradeOption" stylesheets="@../assets/ui/css/uiElement.css" />
+      <AnchorPane fx:id="option3" layoutX="406.0" layoutY="64.0" prefHeight="196.0" prefWidth="128.0" styleClass="upgradeOption" stylesheets="@../assets/ui/css/uiElement.css" />
    </children>
 </AnchorPane>

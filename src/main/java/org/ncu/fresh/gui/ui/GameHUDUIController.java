@@ -1,14 +1,24 @@
 package org.ncu.fresh.gui.ui;
 
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.ui.UIController;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.control.Label;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.ncu.fresh.core.constant.Color;
+import org.ncu.fresh.core.entity.component.attack.base.Weapon;
+import org.ncu.fresh.core.entity.helper.ReferenceHelper;
+import org.ncu.fresh.core.utils.WeaponHelper;
+import org.ncu.fresh.gui.utils.FontHelper;
+import org.ncu.fresh.gui.utils.UIHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameHUDUIController implements UIController {
     @FXML private ImageView hpBackground;
@@ -31,6 +41,38 @@ public class GameHUDUIController implements UIController {
     @FXML private ImageView powerUpSlot3;
     @FXML private ImageView powerUpSlot4;
     @FXML private ImageView powerUpSlot5;
+
+
+    @FXML private ImageView weapon0;
+    @FXML private ImageView weapon1;
+    @FXML private ImageView weapon2;
+    @FXML private ImageView weapon3;
+    @FXML private ImageView weapon4;
+    @FXML private ImageView weapon5;
+
+    @FXML private ImageView powerUp0;
+    @FXML private ImageView powerUp1;
+    @FXML private ImageView powerUp2;
+    @FXML private ImageView powerUp3;
+    @FXML private ImageView powerUp4;
+    @FXML private ImageView powerUp5;
+
+    @FXML private Label weaponLevel0;
+    @FXML private Label weaponLevel1;
+    @FXML private Label weaponLevel2;
+    @FXML private Label weaponLevel3;
+    @FXML private Label weaponLevel4;
+    @FXML private Label weaponLevel5;
+
+
+    private final List<ImageView> weaponList = new ArrayList<>();
+    private final List<ImageView> powerUpList = new ArrayList<>();
+
+    private final List<ImageView> weaponSlotList = new ArrayList<>();
+    private final List<ImageView> powerUpSlotList = new ArrayList<>();
+
+    private final List<Label> weaponLevelList = new ArrayList<>();
+    private final List<Label> powerUpLevelList = new ArrayList<>();
 
     public void updateBar(double hpPercent, double xpPercent) {
 
@@ -74,7 +116,57 @@ public class GameHUDUIController implements UIController {
     }
 
     public void updateInventory() {
+        List<Component> weaponDataList = ReferenceHelper.getPlayerComponent().getWeaponOwned().stream().toList();
+        List<Component> powerUpDataList = ReferenceHelper.getPlayerComponent().getPowerUpOwned().stream().toList();
 
+        if (weaponList.isEmpty() || weaponSlotList.isEmpty() || powerUpList.isEmpty() || powerUpSlotList.isEmpty()) {
+            initializeCollection(weaponList, weapon0, weapon1, weapon2, weapon3, weapon4, weapon5);
+            initializeCollection(weaponSlotList, weaponSlot0, weaponSlot1, weaponSlot2, weaponSlot3, weaponSlot4, weaponSlot5);
+            initializeCollection(powerUpList, powerUp0, powerUp1, powerUp2, powerUp3, powerUp4, powerUp5);
+            initializeCollection(powerUpSlotList, powerUpSlot0, powerUpSlot1, powerUpSlot2, powerUpSlot3, powerUpSlot4, powerUpSlot5);
+            initializeCollection(weaponLevelList, weaponLevel0, weaponLevel1, weaponLevel2, weaponLevel3, weaponLevel4, weaponLevel5);
+
+            for (int i = 0; i < 6; i++) {
+                weaponLevelList.get(i).setFont(FontHelper.shareTechMono(5));
+            }
+        }
+
+        updateSlot(weaponDataList, weaponList, weaponSlotList);
+        updateSlot(powerUpDataList, powerUpList, powerUpSlotList);
+        updateLevel(weaponDataList, weaponLevelList);
+    }
+
+    private void updateSlot(List<Component> componentList, List<ImageView> iconList, List<ImageView> slotList) {
+        for (int i = 0; i < componentList.size(); i++) {
+            Weapon weapon = (Weapon) componentList.get(i);
+            iconList.get(i).setImage(WeaponHelper.getIcon(weapon.getWeaponData().getId()));
+            slotList.get(i).setImage(UIHelper.getItemFrame(weapon.getLevel()));
+            if (weapon.getLevel() == 8) {
+                if (i < 3) {
+                    iconList.get(i).setLayoutY(280);
+                }
+                else {
+                    iconList.get(i).setLayoutY(324);
+                }
+            }
+        }
+    }
+
+    private void updateLevel(List<Component> componentList, List<Label> levelList) {
+        for (int i = 0; i < componentList.size(); i++) {
+            Weapon weapon = (Weapon) componentList.get(i);
+            int level = weapon.getLevel();
+            levelList.get(i).setText(UIHelper.getRomanNumber(level));
+            levelList.get(i).setLayoutX(UIHelper.getLayoutX(level) + 40 * (i % 3));
+        }
+    }
+
+    private void initializeCollection(List<ImageView> list, ImageView... views) {
+        list.addAll(List.of(views));
+    }
+
+    private void initializeCollection(List<Label> list, Label... views) {
+        list.addAll(List.of(views));
     }
 
     @Override

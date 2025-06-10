@@ -27,8 +27,9 @@ module org.ncu.fresh {
     opens assets.textures.projectile;
     opens assets.textures.itemdrop;
     opens assets.textures.icon;
-    opens assets.textures.ui.upgrade;
     opens assets.ui.fonts;
+    opens assets.textures.ui.upgrade;
+    opens assets.textures.ui.hud;
 
     opens description;
 

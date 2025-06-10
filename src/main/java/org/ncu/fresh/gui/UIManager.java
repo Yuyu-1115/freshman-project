@@ -37,7 +37,6 @@ public class UIManager {
 
     public UIManager() {
         FXGL.getGameScene().addUI(GAME_HUD_UI);
-
     }
 
     public static void levelUp(int level) {
@@ -63,5 +62,9 @@ public class UIManager {
                 ReferenceHelper.getPlayer().getComponent(HealthDoubleComponent.class).getValuePercent() / 100.0,
                 ReferenceHelper.getPlayer().getComponent(LevelComponent.class).getExpProgressPercent() / 100.0
         );
+    }
+
+    public static void updateInventory() {
+        ((GameHUDUIController)GAME_HUD_UI.getController()).updateInventory();
     }
 }

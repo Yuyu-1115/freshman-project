@@ -11,6 +11,7 @@ import org.ncu.fresh.core.entity.constant.ItemDropProperties;
 import org.ncu.fresh.core.entity.factory.EnemyFactory;
 import org.ncu.fresh.core.entity.factory.PlayerFactory;
 import org.ncu.fresh.core.entity.helper.ReferenceHelper;
+import org.ncu.fresh.core.handler.TimerHandler;
 import org.ncu.fresh.core.handler.entity.PickupHandler;
 import org.ncu.fresh.core.handler.entity.ProjectileHandler;
 import org.ncu.fresh.core.utils.PropertyHelper;
@@ -34,7 +35,7 @@ public class Main extends GameApplication {
         FXGL.getEventBus().addEventHandler(ItemPickedUpEvent.EXP,
                 itemPickedUpEvent -> player.getComponent(LevelComponent.class)
                         .giveExperience(PropertyHelper.getIntProperty(itemPickedUpEvent.getPickup(), ItemDropProperties.EXP_WORTH)));
-
+        TimerHandler.initializeTimer();
     }
 
     @Override
