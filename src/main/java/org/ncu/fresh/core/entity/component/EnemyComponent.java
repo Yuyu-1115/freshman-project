@@ -38,7 +38,7 @@ public class EnemyComponent extends Component {
         // boids algorithm - separation
         Point2D velocity = ReferenceHelper.getPlayer().getPosition().subtract(entity.getPosition()).normalize();
         Point2D rangePosition = getEntity().getCenter().add(-(double) TILE_SIZE, -(double) TILE_SIZE);
-        // caching neightbours every 0.5 seconds so it won't lag the game
+        // caching neighbours every 0.5 seconds so it won't lag the game
         if (refreshTimer <= 0) {
             neighbours = FXGL.getGameWorld().getEntitiesInRange(new Rectangle2D(rangePosition.getX(), rangePosition.getY(), 2 * (double) TILE_SIZE, 2 * (double) TILE_SIZE));
             refreshTimer = refreshTime;
