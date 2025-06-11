@@ -59,36 +59,6 @@
             <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="powerUpSlot0" fitHeight="38.0" fitWidth="32.0" layoutX="520.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="powerUpSlot1" fitHeight="38.0" fitWidth="32.0" layoutX="560.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="powerUpSlot2" fitHeight="38.0" fitWidth="32.0" layoutX="600.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="powerUpSlot3" fitHeight="38.0" fitWidth="32.0" layoutX="520.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="powerUpSlot4" fitHeight="38.0" fitWidth="32.0" layoutX="560.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="powerUpSlot5" fitHeight="38.0" fitWidth="32.0" layoutX="600.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/textures/ui/hud/itemFrame0.png" />
-         </image>
-      </ImageView>
       <Text fx:id="level" fill="WHITE" layoutX="32.0" layoutY="30.0" stroke="#9badb7" strokeType="OUTSIDE" text="Lv.1">
          <font>
             <Font name="Alagard" size="24.0" />
@@ -105,12 +75,6 @@
       <ImageView fx:id="weapon3" fitHeight="16.0" fitWidth="16.0" layoutX="16.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="weapon4" fitHeight="16.0" fitWidth="16.0" layoutX="56.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="weapon5" fitHeight="16.0" fitWidth="16.0" layoutX="96.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="powerUp0" fitHeight="16.0" fitWidth="16.0" layoutX="528.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="powerUp1" fitHeight="16.0" fitWidth="16.0" layoutX="568.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="powerUp2" fitHeight="16.0" fitWidth="16.0" layoutX="608.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="powerUp3" fitHeight="16.0" fitWidth="16.0" layoutX="528.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="powerUp4" fitHeight="16.0" fitWidth="16.0" layoutX="568.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="powerUp5" fitHeight="16.0" fitWidth="16.0" layoutX="608.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="weaponLevel0" layoutX="19.0" layoutY="299.0" styleClass="skillLevel">
          <font>
             <Font name="Share Tech Mono" size="6.0" />

@@ -17,7 +17,6 @@ public class PlayerComponent extends Component {
      */
 
     private final ArrayList<Component> weaponOwned = new ArrayList<>();
-    private final ArrayList<Component> powerUpOwned = new ArrayList<>();
 
     private int movementSpeed() {
         return PropertyHelper.getIntProperty(entity, PlayerProperties.MOVEMENT_SPEED);
@@ -68,15 +67,9 @@ public class PlayerComponent extends Component {
         }
     }
 
-    public void givePowerUp(Component powerUp) {
-        powerUpOwned.addLast(powerUp);
-    }
 
     public ArrayList<Component> getWeaponOwned() {
         return weaponOwned;
     }
 
-    public ArrayList<Component> getPowerUpOwned() {
-        return powerUpOwned;
-    }
 }
