@@ -1,10 +1,12 @@
 package org.ncu.fresh.core.entity.component.player;
 
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.components.HealthDoubleComponent;
 import com.almasb.fxgl.entity.component.Component;
 import org.ncu.fresh.core.constant.Constant;
 import org.ncu.fresh.core.entity.component.attack.base.Weapon;
 import org.ncu.fresh.core.entity.constant.PlayerProperties;
+import org.ncu.fresh.core.entity.helper.ReferenceHelper;
 import org.ncu.fresh.core.handler.TimerHandler;
 import org.ncu.fresh.core.utils.PropertyHelper;
 import org.ncu.fresh.gui.UIManager;
@@ -45,6 +47,11 @@ public class PlayerComponent extends Component {
             return;
         }
         entity.translateX(movementSpeed());
+    }
+
+    public void damage(double amount) {
+        ReferenceHelper.getPlayer().getComponent(HealthDoubleComponent.class).damage(amount);
+        System.out.println("Player damaged!");
     }
 
     @Override

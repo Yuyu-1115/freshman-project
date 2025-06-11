@@ -4,16 +4,14 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
-import org.ncu.fresh.core.entity.component.player.LevelComponent;
-import org.ncu.fresh.core.entity.constant.ItemDropProperties;
 import org.ncu.fresh.core.entity.factory.PlayerFactory;
 import org.ncu.fresh.core.entity.helper.ReferenceHelper;
+import org.ncu.fresh.core.handler.EventHandler;
 import org.ncu.fresh.core.handler.InputHandler;
 import org.ncu.fresh.core.handler.TimerHandler;
+import org.ncu.fresh.core.handler.entity.EnemyPlayerHandler;
 import org.ncu.fresh.core.handler.entity.PickupHandler;
 import org.ncu.fresh.core.handler.entity.ProjectileHandler;
-import org.ncu.fresh.core.utils.PropertyHelper;
-import org.ncu.fresh.event.ItemPickedUpEvent;
 import org.ncu.fresh.gui.UIManager;
 import org.ncu.fresh.gui.utils.MenuFactory;
 
@@ -24,15 +22,10 @@ import static org.ncu.fresh.core.constant.Constant.WINDOWS_WIDTH;
 
 public class Main extends GameApplication {
 
-    private Entity player;
-
     @Override
     protected void initGame() {
-        player = PlayerFactory.createPlayer();
-
-        FXGL.getEventBus().addEventHandler(ItemPickedUpEvent.EXP,
-                itemPickedUpEvent -> player.getComponent(LevelComponent.class)
-                        .giveExperience(PropertyHelper.getIntProperty(itemPickedUpEvent.getPickup(), ItemDropProperties.EXP_WORTH)));
+        PlayerFactory.createPlayer();
+        EventHandler.initializeEventHandler();
         TimerHandler.initializeTimer();
     }
 
@@ -51,6 +44,7 @@ public class Main extends GameApplication {
     protected void initPhysics() {
         FXGL.getPhysicsWorld().addCollisionHandler(new ProjectileHandler());
         FXGL.getPhysicsWorld().addCollisionHandler(new PickupHandler());
+        FXGL.getPhysicsWorld().addCollisionHandler(new EnemyPlayerHandler());
     }
 
     @Override

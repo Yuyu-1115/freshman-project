@@ -24,7 +24,7 @@ public class PlayerFactory implements EntityFactory {
                 .viewWithBBox(new Rectangle(20, 20, Color.BLUE))
                 .with(new PlayerComponent())
                 .with(new LevelComponent())
-                .with(new HealthDoubleComponent(500))
+                .with(new HealthDoubleComponent(100))
                 .collidable()
                 .buildAndAttach();
         InitializationHelper.initializePlayer(player);
