@@ -11,19 +11,19 @@ import java.util.function.Supplier;
 
 public enum WeaponData {
     // fire
-    INFERNAL_WHEEL("infernalWheel", new InfernalWheelComponent()),
+    INFERNAL_WHEEL("infernalWheel", InfernalWheelComponent::new),
     // water
-    AQUA_CUTTER("aquaCutter", new AquaCutterComponent()),
+    AQUA_CUTTER("aquaCutter", AquaCutterComponent::new),
     // wind
-    WIND_BLADE("windBlade", new WindBladeComponent()),
-    ZEPHYR_STAR("zephyrStar", new ZephyrStarComponent());
+    WIND_BLADE("windBlade", WindBladeComponent::new),
+    ZEPHYR_STAR("zephyrStar", ZephyrStarComponent::new);
 
     private final String id;
     private final Supplier<Component> componentSupplier;
 
-    WeaponData(String id, Component component) {
+    WeaponData(String id, Supplier<Component> supplier) {
         this.id = id;
-        this.componentSupplier = () -> component;
+        this.componentSupplier = supplier;
     }
 
     public String getId() {
