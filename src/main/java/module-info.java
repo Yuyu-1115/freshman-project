@@ -11,6 +11,7 @@ module org.ncu.fresh {
     requires com.almasb.fxgl.all;
     requires java.desktop;
     requires com.fasterxml.jackson.databind;
+    requires annotations;
 
     exports org.ncu.fresh.core.entity.component.attack.base;
     exports org.ncu.fresh.core.entity.component.attack.animation to com.almasb.fxgl.core;

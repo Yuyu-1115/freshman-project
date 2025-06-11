@@ -76,9 +76,21 @@ public class GameHUDUIController implements UIController {
 
     public void updateBar(double hpPercent, double xpPercent) {
 
-        // FIXME: Fix the display of xpBar
+        // the viewpoint won't be effective if we pass a zero width/height rectangle, so we deliberately add one that it won't affect the display
+        // while if fixes the xp bar issue
+        if (hpPercent > 0) {
             hpFill.setViewport(new Rectangle2D(0, 0, hpFill.getImage().getWidth() * hpPercent, hpFill.getImage().getHeight()));
+        }
+        else {
+            hpFill.setViewport(new Rectangle2D(0, 0, 1, 1));
+        }
+        if (xpPercent > 0) {
             xpFill.setViewport(new Rectangle2D(0, 0, xpFill.getImage().getWidth() * xpPercent, xpFill.getImage().getHeight()));
+        }
+        else {
+            xpFill.setViewport(new Rectangle2D(0, 0, 1, 1));
+        }
+
 
         if (hpPercent <= 0.2) {
             hpFill.setEffect(Color.HP_RED);

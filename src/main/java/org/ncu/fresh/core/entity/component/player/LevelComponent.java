@@ -5,7 +5,7 @@ import com.almasb.fxgl.entity.component.Component;
 import org.ncu.fresh.gui.UIManager;
 
 public class LevelComponent extends Component {
-    private int level = 1;
+    private int level = 0;
     private int currentExperience = 0;
 
     @Override
@@ -13,7 +13,6 @@ public class LevelComponent extends Component {
         if (canLevelUp()) {
             currentExperience -= level * 100;
             level += 1;
-            entity.getComponent(HealthDoubleComponent.class).restorePercentageMax(50);
             UIManager.levelUp(level);
         }
     }
@@ -29,5 +28,9 @@ public class LevelComponent extends Component {
 
     private boolean canLevelUp() {
         return currentExperience >= level * 100;
+    }
+
+    public int getLevel() {
+        return level;
     }
 }

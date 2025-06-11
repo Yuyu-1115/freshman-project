@@ -28,10 +28,6 @@ public class Main extends GameApplication {
     @Override
     protected void initGame() {
         Entity player = PlayerFactory.createPlayer();
-        for (int i = 0; i < 4; i++) {
-            Point2D position = new Point2D(100 + i * 50, 100 + i * 50);
-            EnemyFactory.createEnemy(position, 100, new ImageView(FXGL.getAssetLoader().loadImage("slime.png")));
-        }
         FXGL.getEventBus().addEventHandler(ItemPickedUpEvent.EXP,
                 itemPickedUpEvent -> player.getComponent(LevelComponent.class)
                         .giveExperience(PropertyHelper.getIntProperty(itemPickedUpEvent.getPickup(), ItemDropProperties.EXP_WORTH)));

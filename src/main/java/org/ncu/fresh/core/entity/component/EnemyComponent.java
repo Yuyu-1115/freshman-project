@@ -47,7 +47,7 @@ public class EnemyComponent extends Component {
         }
         // take the weighted sum and then normalize
         // TODO: the weight need to be adjusted more
-        Point2D finalDirection = velocity.multiply(0.1).add(weightedRepulsion.multiply(2)).normalize();
+        Point2D finalDirection = velocity.multiply(0.1).add(weightedRepulsion.multiply(1.8)).normalize();
 
         getEntity().setPosition(getEntity().getPosition().add(finalDirection.multiply(speed * tpf)));
     }
