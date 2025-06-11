@@ -17,7 +17,7 @@ import static org.ncu.fresh.core.constant.Constant.TILE_SIZE;
 public class EnemyComponent extends Component {
     private final ColorAdjust colorAdjust = new ColorAdjust();
     private final double speed;
-    private final double attack = 1;
+    private final double attack;
     private List<Entity> neighbours = new ArrayList<>();
     public static final double cacheTime = 0.5;
     public static final double attackTime = 0.1;
@@ -25,8 +25,9 @@ public class EnemyComponent extends Component {
     private double attackTimer = 0;
     private boolean isAttacking = false;
 
-    public EnemyComponent(double speed) {
+    public EnemyComponent(double speed, double attack) {
         this.speed = speed;
+        this.attack = attack;
     }
 
     @Override
