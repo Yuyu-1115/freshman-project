@@ -13,6 +13,9 @@ import org.ncu.fresh.gui.ui.UpgradeUIController;
 import java.io.IOException;
 
 public class UIManager {
+    /*
+    This class is for the UI in game.
+     */
     private static final UI GAME_HUD_UI;
     private static final UI LEVEL_UP_UI;
     private static boolean isLevelUpUiPresent = false;

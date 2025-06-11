@@ -2,6 +2,7 @@ package org.ncu.fresh.gui.ui;
 
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.component.Component;
+import com.almasb.fxgl.ui.UI;
 import com.almasb.fxgl.ui.UIController;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
@@ -149,7 +150,12 @@ public class GameHUDUIController implements UIController {
     }
 
     private void updateSlot(List<Component> componentList, List<ImageView> iconList, List<ImageView> slotList) {
-        for (int i = 0; i < componentList.size(); i++) {
+        for (int i = 0; i < 6; i++) {
+            if (i >= componentList.size()) {
+                iconList.get(i).setImage(null);
+                slotList.get(i).setImage(UIHelper.getItemFrame(0));
+                continue;
+            }
             Weapon weapon = (Weapon) componentList.get(i);
             iconList.get(i).setImage(WeaponHelper.getIcon(weapon.getWeaponData().getId()));
             slotList.get(i).setImage(UIHelper.getItemFrame(weapon.getLevel()));
@@ -165,7 +171,11 @@ public class GameHUDUIController implements UIController {
     }
 
     private void updateLevel(List<Component> componentList, List<Label> levelList) {
-        for (int i = 0; i < componentList.size(); i++) {
+        for (int i = 0; i < 6; i++) {
+            if (i >= componentList.size()) {
+                levelList.get(i).setText(null);
+                continue;
+            }
             Weapon weapon = (Weapon) componentList.get(i);
             int level = weapon.getLevel();
             levelList.get(i).setText(UIHelper.getRomanNumber(level));

@@ -5,6 +5,7 @@ import com.almasb.fxgl.entity.component.Component;
 import org.ncu.fresh.core.constant.Constant;
 import org.ncu.fresh.core.entity.component.attack.base.Weapon;
 import org.ncu.fresh.core.entity.constant.PlayerProperties;
+import org.ncu.fresh.core.handler.TimerHandler;
 import org.ncu.fresh.core.utils.PropertyHelper;
 import org.ncu.fresh.gui.UIManager;
 
@@ -50,6 +51,7 @@ public class PlayerComponent extends Component {
     @Override
     public void onUpdate(double tpf) {
         UIManager.updateBar();
+        TimerHandler.updateBackground();
     }
 
     public void giveWeapon(Component weapon) {
@@ -58,7 +60,11 @@ public class PlayerComponent extends Component {
             weaponOwned.addLast(weapon);
         }
         else {
-            ((Weapon)weapon).levelUp();
+            for (var item: weaponOwned) {
+                if (item.getClass() == weapon.getClass()) {
+                    ((Weapon)item).levelUp();
+                }
+            }
         }
     }
 

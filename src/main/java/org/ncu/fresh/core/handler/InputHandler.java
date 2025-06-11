@@ -7,25 +7,18 @@ import javafx.scene.input.KeyCode;
 import org.ncu.fresh.core.entity.component.attack.InfernalWheelComponent;
 import org.ncu.fresh.core.entity.component.player.LevelComponent;
 import org.ncu.fresh.core.entity.component.player.PlayerComponent;
+import org.ncu.fresh.core.entity.helper.ReferenceHelper;
 
 public class InputHandler {
-    public static void initPlayerMovement(Entity player) {
+    public static void initPlayerMovement() {
         FXGL.onKey(KeyCode.W,
-                () -> player.getComponent(PlayerComponent.class).moveUp());
+                () -> ReferenceHelper.getPlayerComponent().moveUp());
         FXGL.onKey(KeyCode.S,
-                () -> player.getComponent(PlayerComponent.class).moveDown());
+                () -> ReferenceHelper.getPlayerComponent().moveDown());
         FXGL.onKey(KeyCode.A,
-                () -> player.getComponent(PlayerComponent.class).moveLeft());
+                () -> ReferenceHelper.getPlayerComponent().moveLeft());
         FXGL.onKey(KeyCode.D,
-                () -> player.getComponent(PlayerComponent.class).moveRight());
-
-
-        FXGL.onKey(KeyCode.SPACE,
-                () -> player.getComponent(LevelComponent.class).giveExperience(5));
-
-        FXGL.onKey(KeyCode.C,
-                () -> player.getComponent(HealthDoubleComponent.class).damage(10));
-
+                () -> ReferenceHelper.getPlayerComponent().moveRight());
 
     }
 }

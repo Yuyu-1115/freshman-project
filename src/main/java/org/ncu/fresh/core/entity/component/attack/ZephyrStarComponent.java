@@ -20,7 +20,6 @@ public class ZephyrStarComponent extends BezierProjectileComponent {
     public void levelUp() {
         level += 1;
         damage += 6;
-        projectileNumber += 1;
         reinitializeProjectile();
     }
 }

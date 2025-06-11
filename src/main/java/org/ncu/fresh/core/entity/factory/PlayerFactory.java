@@ -28,7 +28,6 @@ public class PlayerFactory implements EntityFactory {
                 .collidable()
                 .buildAndAttach();
         InitializationHelper.initializePlayer(player);
-        InputHandler.initPlayerMovement(player);
         return player;
     }
 }
