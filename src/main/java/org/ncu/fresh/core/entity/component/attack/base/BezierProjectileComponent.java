@@ -47,7 +47,7 @@ public abstract class BezierProjectileComponent extends Component implements Wea
     @Override
     public void onAdded() {
         for (int i = 0; i < projectileNumber; i++) {
-            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName, entity.getPosition(), damage, 0, 5, true));
+            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName, entity.getPosition(), damage, 0, 5, true, getWeaponData()));
         }
     }
 
@@ -98,7 +98,7 @@ public abstract class BezierProjectileComponent extends Component implements Wea
         }
         projectileList.clear();
         for (int i = 0; i < projectileNumber; i++) {
-            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName, ReferenceHelper.getPlayer().getPosition(), damage, 0, 5, true));
+            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName, ReferenceHelper.getPlayer().getPosition(), damage, 0, 5, true, getWeaponData()));
         }
     }
 }

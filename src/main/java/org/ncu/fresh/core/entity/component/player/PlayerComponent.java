@@ -4,6 +4,7 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.dsl.components.HealthDoubleComponent;
 import com.almasb.fxgl.entity.component.Component;
 import org.ncu.fresh.core.constant.Constant;
+import org.ncu.fresh.core.constant.WeaponData;
 import org.ncu.fresh.core.entity.component.attack.base.Weapon;
 import org.ncu.fresh.core.entity.constant.PlayerProperties;
 import org.ncu.fresh.core.entity.helper.ReferenceHelper;
@@ -15,55 +16,56 @@ import java.util.ArrayList;
 
 public class PlayerComponent extends Component {
     /*
-    Contain every basic data and behaviour related to the player
+    Contain every data and behaviour related to the player
      */
 
     private final ArrayList<Component> weaponOwned = new ArrayList<>();
-
-    private int movementSpeed() {
-        return PropertyHelper.getIntProperty(entity, PlayerProperties.MOVEMENT_SPEED);
-    }
+    private final ArrayList<Integer> damageDealt = new ArrayList<>();
 
     public void moveUp() {
         if (FXGL.getWorldProperties().getBoolean(Constant.IS_PAUSED)) {
             return;
         }
-        entity.translateY(-movementSpeed());
+        entity.translateY(-getMovementSpeed());
     }
     public void moveDown() {
         if (FXGL.getWorldProperties().getBoolean(Constant.IS_PAUSED)) {
             return;
         }
-        entity.translateY(movementSpeed());
+        entity.translateY(getMovementSpeed());
     }
     public void moveLeft() {
         if (FXGL.getWorldProperties().getBoolean(Constant.IS_PAUSED)) {
             return;
         }
-        entity.translateX(-movementSpeed());
+        entity.translateX(-getMovementSpeed());
     }
     public void moveRight() {
         if (FXGL.getWorldProperties().getBoolean(Constant.IS_PAUSED)) {
             return;
         }
-        entity.translateX(movementSpeed());
+        entity.translateX(getMovementSpeed());
     }
 
     public void damage(double amount) {
         ReferenceHelper.getPlayer().getComponent(HealthDoubleComponent.class).damage(amount);
-        System.out.println("Player damaged!");
     }
 
-    @Override
-    public void onUpdate(double tpf) {
-        UIManager.updateBar();
-        TimerHandler.updateBackground();
+    public void updateRecord(WeaponData weaponData, int damage) {
+        for (int i = 0; i < damageDealt.size(); i++) {
+            if (weaponOwned.get(i).getClass() == weaponData.getComponentSupplier().get().getClass()) {
+                damageDealt.set(i, damageDealt.get(i) + damage);
+                // System.out.println(weaponData.getName() + " has dealt " + damageDealt.get(i) + " damages");
+                return;
+            }
+        }
     }
 
     public void giveWeapon(Component weapon) {
         if (entity.getComponentOptional(weapon.getClass()).isEmpty()) {
             entity.addComponent(weapon);
             weaponOwned.addLast(weapon);
+            damageDealt.add(0);
         }
         else {
             for (var item: weaponOwned) {
@@ -74,6 +76,15 @@ public class PlayerComponent extends Component {
         }
     }
 
+    @Override
+    public void onUpdate(double tpf) {
+        UIManager.updateBar();
+        TimerHandler.updateBackground();
+    }
+
+    private int getMovementSpeed() {
+        return PropertyHelper.getIntProperty(entity, PlayerProperties.MOVEMENT_SPEED);
+    }
 
     public ArrayList<Component> getWeaponOwned() {
         return weaponOwned;

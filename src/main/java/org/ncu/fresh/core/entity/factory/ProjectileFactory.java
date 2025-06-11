@@ -10,6 +10,7 @@ import com.almasb.fxgl.entity.components.BoundingBoxComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
+import org.ncu.fresh.core.constant.WeaponData;
 import org.ncu.fresh.core.entity.EntityType;
 import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
@@ -21,7 +22,7 @@ public class ProjectileFactory implements EntityFactory {
     /*
     Create a new Projectile based on given position and direction
      */
-    public static Entity createProjectile(Point2D position, Point2D direction, int damage, double speed, double size, Color color, boolean isPiercing) {
+    public static Entity createProjectile(Point2D position, Point2D direction, int damage, double speed, double size, Color color, boolean isPiercing, WeaponData source) {
         Entity projectile =  FXGL.entityBuilder()
                 .type(EntityType.PROJECTILE)
                 .at(position)
@@ -30,9 +31,7 @@ public class ProjectileFactory implements EntityFactory {
                 .with(new ProjectileComponent(direction, speed))
                 .collidable()
                 .buildAndAttach();
-        InitializationHelper.initializeProjectile(projectile, damage, speed, size, isPiercing);
-
-        projectile.setZ(-1);
+        InitializationHelper.initializeProjectile(projectile, damage, speed, size, isPiercing, source);
 
         // Making Projectile won't collide with each other so that they won't interfere with each other
         projectile.getComponent(CollidableComponent.class).addIgnoredType(EntityType.PROJECTILE);
@@ -44,7 +43,7 @@ public class ProjectileFactory implements EntityFactory {
     /*
     Create bullet that rotates around the player
      */
-    public static Entity createRotatingProjectile(String assetName,Point2D position, int damage, double speed, double size, boolean isPiercing) {
+    public static Entity createRotatingProjectile(String assetName,Point2D position, int damage, double speed, double size, boolean isPiercing, WeaponData source) {
         Entity projectile = FXGL.entityBuilder()
                 .type(EntityType.PROJECTILE)
                 .at(position)
@@ -52,9 +51,7 @@ public class ProjectileFactory implements EntityFactory {
                 .collidable()
                 .buildAndAttach();
 
-        InitializationHelper.initializeProjectile(projectile, damage, speed, size, isPiercing);
-
-        projectile.setZ(-1);
+        InitializationHelper.initializeProjectile(projectile, damage, speed, size, isPiercing, source);
 
         projectile.getComponent(CollidableComponent.class).addIgnoredType(EntityType.PROJECTILE);
         projectile.getComponent(BoundingBoxComponent.class).addHitBox(new HitBox("body", BoundingShape.circle(size)));

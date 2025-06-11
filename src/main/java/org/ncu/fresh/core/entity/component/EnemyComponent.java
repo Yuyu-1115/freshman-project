@@ -48,7 +48,7 @@ public class EnemyComponent extends Component {
             }
             else {
                 attackTimer += tpf;
-                System.out.println("Attacking... timer: " + attackTimer);
+                // System.out.println("Attacking... timer: " + attackTimer);
             }
         }
 

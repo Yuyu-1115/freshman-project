@@ -54,7 +54,7 @@ public abstract class SpinningProjectileComponent extends Component implements W
     @Override
     public final void onAdded() {
         for (int i = 0; i < projectileNumber; i++) {
-            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName, entity.getPosition(), damage, rotationSpeed, 5, true));
+            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName, entity.getPosition(), damage, rotationSpeed, 5, true, getWeaponData()));
         }
     }
 
@@ -84,7 +84,7 @@ public abstract class SpinningProjectileComponent extends Component implements W
         }
         projectileList.clear();
         for (int i = 0; i < projectileNumber; i++) {
-            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName, entity.getPosition(), damage, rotationSpeed, 5, true));
+            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName, entity.getPosition(), damage, rotationSpeed, 5, true, getWeaponData()));
         }
     }
 

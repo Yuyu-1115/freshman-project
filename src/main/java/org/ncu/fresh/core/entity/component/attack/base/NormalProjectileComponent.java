@@ -39,7 +39,8 @@ public abstract class NormalProjectileComponent extends Component implements Wea
                         20,
                         5,
                         Color.AZURE,
-                        false);
+                        false,
+                        getWeaponData());
             }
             currentCooldown = ATTACK_COOLDOWN;
         }

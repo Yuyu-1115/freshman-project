@@ -3,6 +3,7 @@ package org.ncu.fresh.core.utils;
 
 import com.almasb.fxgl.entity.Entity;
 import javafx.event.Event;
+import org.ncu.fresh.core.constant.WeaponData;
 
 public class PropertyHelper {
     public static int getIntProperty(Entity entity, String property) {
@@ -22,6 +23,10 @@ public class PropertyHelper {
     }
 
     public static Event getEventProperty(Entity entity, String property) {
+        return entity.getProperties().getObject(property);
+    }
+
+    public static WeaponData getWeaponDataProperty(Entity entity, String property) {
         return entity.getProperties().getObject(property);
     }
 
