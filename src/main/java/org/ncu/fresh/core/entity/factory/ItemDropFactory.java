@@ -20,7 +20,7 @@ public class ItemDropFactory implements EntityFactory {
                 .view("itemdrop/expOrb.png")
                 .collidable()
                 .buildAndAttach();
-        InitializationHelper.initializeItemDrop(experienceOrb, 10, 0, ItemPickedUpEvent.EXP);
+        InitializationHelper.initializeItemDrop(experienceOrb, 10, ItemPickedUpEvent.EXP);
         experienceOrb.getComponent(BoundingBoxComponent.class).addHitBox(new HitBox(BoundingShape.circle(10)));
         return experienceOrb;
     }
