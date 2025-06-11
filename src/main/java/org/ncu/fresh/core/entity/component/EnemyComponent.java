@@ -8,6 +8,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.effect.ColorAdjust;
 import org.ncu.fresh.core.entity.helper.ReferenceHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.ncu.fresh.core.constant.Constant.TILE_SIZE;
@@ -15,6 +16,9 @@ import static org.ncu.fresh.core.constant.Constant.TILE_SIZE;
 public class EnemyComponent extends Component {
     private final ColorAdjust colorAdjust = new ColorAdjust();
     private final double speed;
+    private List<Entity> neighbours = new ArrayList<>();
+    public static final double refreshTime = 0.5;
+    private double refreshTimer = 0;
 
     public EnemyComponent(double speed) {
         this.speed = speed;
@@ -34,7 +38,14 @@ public class EnemyComponent extends Component {
         // boids algorithm - separation
         Point2D velocity = ReferenceHelper.getPlayer().getPosition().subtract(entity.getPosition()).normalize();
         Point2D rangePosition = getEntity().getCenter().add(-(double) TILE_SIZE, -(double) TILE_SIZE);
-        List<Entity> neighbours = FXGL.getGameWorld().getEntitiesInRange(new Rectangle2D(rangePosition.getX(), rangePosition.getY(), 2 * (double) TILE_SIZE, 2 * (double) TILE_SIZE));
+        // caching neightbours every 0.5 seconds so it won't lag the game
+        if (refreshTimer <= 0) {
+            neighbours = FXGL.getGameWorld().getEntitiesInRange(new Rectangle2D(rangePosition.getX(), rangePosition.getY(), 2 * (double) TILE_SIZE, 2 * (double) TILE_SIZE));
+            refreshTimer = refreshTime;
+        }
+        else {
+            refreshTimer -= tpf;
+        }
         Point2D weightedRepulsion = Point2D.ZERO;
         for (Entity neighbour: neighbours) {
             // the weight is the reciprocals of the distance (1/L)
