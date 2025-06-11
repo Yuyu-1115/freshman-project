@@ -4,6 +4,7 @@ import com.almasb.fxgl.entity.component.Component;
 import org.ncu.fresh.core.entity.component.attack.AquaCutterComponent;
 import org.ncu.fresh.core.entity.component.attack.InfernalWheelComponent;
 import org.ncu.fresh.core.entity.component.attack.WindBladeComponent;
+import org.ncu.fresh.core.entity.component.attack.ZephyrStarComponent;
 import org.ncu.fresh.core.utils.WeaponHelper;
 
 import java.util.function.Supplier;
@@ -14,7 +15,8 @@ public enum WeaponData {
     // water
     AQUA_CUTTER("aquaCutter", new AquaCutterComponent()),
     // wind
-    WIND_BLADE("windBlade", new WindBladeComponent());
+    WIND_BLADE("windBlade", new WindBladeComponent()),
+    ZEPHYR_STAR("zephyrStar", new ZephyrStarComponent());
 
     private final String id;
     private final Supplier<Component> componentSupplier;
@@ -32,12 +34,12 @@ public enum WeaponData {
         return WeaponHelper.getWeaponName(id);
     }
 
-    public String getShortDesc() {
-        return WeaponHelper.getWeaponShortDesc(id);
+    public String getUpgradeDesc() {
+        return WeaponHelper.getWeaponUpgradeDesc(id);
     }
 
-    public String getLongDesc() {
-        return WeaponHelper.getWeaponLongDesc(id);
+    public String getBaseDesc() {
+        return WeaponHelper.getWeaponBaseDesc(id);
     }
 
     public Supplier<Component> getComponentSupplier() {

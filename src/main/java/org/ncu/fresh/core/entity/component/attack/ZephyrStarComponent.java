@@ -6,20 +6,20 @@ import org.ncu.fresh.core.constant.WeaponData;
 import org.ncu.fresh.core.entity.component.attack.base.BezierProjectileComponent;
 import org.ncu.fresh.core.utils.WeaponHelper;
 
-public class TestComponent extends BezierProjectileComponent {
-    public TestComponent() {
-        super(WeaponHelper.getAssetName("infernalWheel"), 20, 5, Constant.TILE_SIZE, 2, new Point2D(0, 0), new Point2D(60, 20), new Point2D(60, 60), new Point2D(20, 120));
+public class ZephyrStarComponent extends BezierProjectileComponent {
+    public ZephyrStarComponent() {
+        super(WeaponHelper.getAssetName("zephyrStar"), 12, 5, Constant.TILE_SIZE, 2, new Point2D(0, 0), new Point2D(60, 20), new Point2D(60, 60), new Point2D(20, 120));
     }
 
     @Override
     public WeaponData getWeaponData() {
-        return null;
+        return WeaponData.ZEPHYR_STAR;
     }
 
     @Override
     public void levelUp() {
         level += 1;
-        damage += 2;
+        damage += 6;
         projectileNumber += 1;
         reinitializeProjectile();
     }
