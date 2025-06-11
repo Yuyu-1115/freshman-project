@@ -7,6 +7,7 @@ import com.almasb.fxgl.entity.component.Component;
 import javafx.geometry.Point2D;
 import org.ncu.fresh.core.constant.WeaponData;
 import org.ncu.fresh.core.entity.factory.ProjectileFactory;
+import org.ncu.fresh.core.entity.helper.ReferenceHelper;
 
 import java.util.ArrayList;
 import java.util.function.Function;
@@ -56,7 +57,7 @@ public abstract class BezierProjectileComponent extends Component implements Wea
             return;
         }
         double diff = Math.PI * 2 / projectileNumber;
-        Point2D center = getEntity().getCenter();
+        Point2D center = ReferenceHelper.getPlayer().getCenter();
         // calculate T for the Bézier curve
         // hind the projectile once it reach its end
         // and show it when reset
@@ -97,7 +98,7 @@ public abstract class BezierProjectileComponent extends Component implements Wea
         }
         projectileList.clear();
         for (int i = 0; i < projectileNumber; i++) {
-            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName, entity.getPosition(), damage, 0, 5, true));
+            projectileList.add(ProjectileFactory.createRotatingProjectile(assetName, ReferenceHelper.getPlayer().getPosition(), damage, 0, 5, true));
         }
     }
 }

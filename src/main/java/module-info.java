@@ -11,10 +11,12 @@ module org.ncu.fresh {
     requires com.almasb.fxgl.all;
     requires java.desktop;
     requires com.fasterxml.jackson.databind;
+    requires annotations;
 
     exports org.ncu.fresh.core.entity.component.attack.base;
     exports org.ncu.fresh.core.entity.component.attack.animation to com.almasb.fxgl.core;
     exports org.ncu.fresh to com.almasb.fxgl.core;
+    exports org.ncu.fresh.gui to com.almasb.fxgl.core;
     exports org.ncu.fresh.core.entity to com.almasb.fxgl.core;
     exports org.ncu.fresh.event;
     exports org.ncu.fresh.core.constant;
@@ -30,6 +32,7 @@ module org.ncu.fresh {
     opens assets.ui.fonts;
     opens assets.textures.ui.upgrade;
     opens assets.textures.ui.hud;
+    opens assets.textures.ui.main_menu;
 
     opens description;
 

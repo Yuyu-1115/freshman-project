@@ -4,19 +4,16 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
-import javafx.geometry.Point2D;
-import javafx.scene.image.ImageView;
-import org.ncu.fresh.core.entity.component.player.LevelComponent;
-import org.ncu.fresh.core.entity.constant.ItemDropProperties;
-import org.ncu.fresh.core.entity.factory.EnemyFactory;
 import org.ncu.fresh.core.entity.factory.PlayerFactory;
 import org.ncu.fresh.core.entity.helper.ReferenceHelper;
+import org.ncu.fresh.core.handler.EventHandler;
+import org.ncu.fresh.core.handler.InputHandler;
 import org.ncu.fresh.core.handler.TimerHandler;
+import org.ncu.fresh.core.handler.entity.EnemyPlayerHandler;
 import org.ncu.fresh.core.handler.entity.PickupHandler;
 import org.ncu.fresh.core.handler.entity.ProjectileHandler;
-import org.ncu.fresh.core.utils.PropertyHelper;
-import org.ncu.fresh.event.ItemPickedUpEvent;
 import org.ncu.fresh.gui.UIManager;
+import org.ncu.fresh.gui.utils.MenuFactory;
 
 import java.util.Map;
 
@@ -27,14 +24,8 @@ public class Main extends GameApplication {
 
     @Override
     protected void initGame() {
-        Entity player = PlayerFactory.createPlayer();
-        for (int i = 0; i < 4; i++) {
-            Point2D position = new Point2D(100 + i * 50, 100 + i * 50);
-            EnemyFactory.createEnemy(position, 100, new ImageView(FXGL.getAssetLoader().loadImage("slime.png")));
-        }
-        FXGL.getEventBus().addEventHandler(ItemPickedUpEvent.EXP,
-                itemPickedUpEvent -> player.getComponent(LevelComponent.class)
-                        .giveExperience(PropertyHelper.getIntProperty(itemPickedUpEvent.getPickup(), ItemDropProperties.EXP_WORTH)));
+        PlayerFactory.createPlayer();
+        EventHandler.initializeEventHandler();
         TimerHandler.initializeTimer();
     }
 
@@ -45,9 +36,15 @@ public class Main extends GameApplication {
     }
 
     @Override
+    protected void initInput() {
+        InputHandler.initPlayerMovement();
+    }
+
+    @Override
     protected void initPhysics() {
         FXGL.getPhysicsWorld().addCollisionHandler(new ProjectileHandler());
         FXGL.getPhysicsWorld().addCollisionHandler(new PickupHandler());
+        FXGL.getPhysicsWorld().addCollisionHandler(new EnemyPlayerHandler());
     }
 
     @Override
@@ -59,11 +56,12 @@ public class Main extends GameApplication {
     protected void initSettings(GameSettings gameSettings) {
         gameSettings.setWidth(WINDOWS_WIDTH);
         gameSettings.setHeight(WINDOWS_HEIGHT);
-
         gameSettings.setScaleAffectedOnResize(true);
         gameSettings.setPreserveResizeRatio(true);
         gameSettings.setManualResizeEnabled(true);
-        gameSettings.setTitle("Team Project");
+        gameSettings.setTitle("Lex Elementi: Apotheosis");
+        gameSettings.setMainMenuEnabled(true);
+        gameSettings.setSceneFactory(new MenuFactory());
 
     }
 

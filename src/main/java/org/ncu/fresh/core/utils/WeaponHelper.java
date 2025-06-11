@@ -12,12 +12,12 @@ public class WeaponHelper {
         return description.getString("weapon." + id + ".name");
     }
 
-    public static String getWeaponShortDesc(String id) {
-        return description.getString("weapon." + id + ".shortDesc");
+    public static String getWeaponUpgradeDesc(String id) {
+        return description.getString("weapon." + id + ".upgradeDesc");
     }
 
-    public static String getWeaponLongDesc(String id) {
-        return description.getString("weapon." + id + ".longDesc");
+    public static String getWeaponBaseDesc(String id) {
+        return description.getString("weapon." + id + ".baseDesc");
     }
 
     public static String getAssetName(String id) {

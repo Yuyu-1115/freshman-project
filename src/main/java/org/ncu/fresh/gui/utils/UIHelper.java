@@ -31,7 +31,7 @@ public class UIHelper {
         ImageView skillIcon = new ImageView(WeaponHelper.getIcon(id.getId()));
         Button button = new Button();
         Label skillName = new Label(id.getName());
-        Label skillDesc = new Label(id.getLongDesc());
+        Label skillDesc = new Label(id.getBaseDesc());
 
         button.setOnAction(event -> {
             ReferenceHelper.getPlayerComponent().giveWeapon(id.getComponentSupplier().get());

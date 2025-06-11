@@ -28,8 +28,4 @@ public class ProjectileHandler extends CollisionHandler {
             FXGL.getGameWorld().removeEntity(b);
         }
     }
-
-    private int calculateDamage(Entity projectile) {
-        return 0;
-    }
 }
