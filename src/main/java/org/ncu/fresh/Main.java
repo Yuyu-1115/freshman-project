@@ -50,6 +50,7 @@ public class Main extends GameApplication {
     @Override
     protected void initGameVars(Map<String, Object> vars) {
         vars.put("isPaused", false);
+        vars.put("enemyKilled", 0);
     }
 
     @Override

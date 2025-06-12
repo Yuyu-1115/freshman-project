@@ -80,6 +80,11 @@ public class PlayerComponent extends Component {
     public void onUpdate(double tpf) {
         UIManager.updateBar();
         TimerHandler.updateBackground();
+        if (ReferenceHelper.getPlayer().getComponent(HealthDoubleComponent.class).isZero()) {
+            UIManager.showResult();
+            FXGL.getGameController().pauseEngine();
+            FXGL.getWorldProperties().setValue(Constant.IS_PAUSED, true);
+        }
     }
 
     private int getMovementSpeed() {
@@ -90,4 +95,7 @@ public class PlayerComponent extends Component {
         return weaponOwned;
     }
 
+    public ArrayList<Integer> getDamageDealt() {
+        return damageDealt;
+    }
 }
