@@ -25,24 +25,20 @@ public class UIHelper {
     private static final Image itemFrame7 = FXGL.getAssetLoader().loadImage("ui/hud/itemFrame7.png");
     private static final Image itemFrame8 = FXGL.getAssetLoader().loadImage("ui/hud/itemFrame8.png");
 
-
-    private static final Image itemLevel0 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel0.png");
-    private static final Image itemLevel1 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel1.png");
-    private static final Image itemLevel2 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel2.png");
-    private static final Image itemLevel3 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel3.png");
-    private static final Image itemLevel4 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel4.png");
-    private static final Image itemLevel5 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel5.png");
-    private static final Image itemLevel6 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel6.png");
-    private static final Image itemLevel7 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel7.png");
-    private static final Image itemLevel8 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel8.png");
-
     public static void createUpgradeOption(WeaponData id, AnchorPane buttonView) {
         buttonView.getChildren().clear();
         ImageView background = new ImageView(upgradeChoice);
         ImageView skillIcon = new ImageView(WeaponHelper.getIcon(id.getId()));
         Button button = new Button();
         Label skillName = new Label(id.getName());
-        Label skillDesc = new Label(id.getBaseDesc());
+        Label skillDesc = new Label();
+
+        if (ReferenceHelper.getPlayer().getComponentOptional(id.getComponentSupplier().get().getClass()).isPresent()) {
+            skillDesc.setText(id.getUpgradeDesc());
+        }
+        else {
+            skillDesc.setText(id.getBaseDesc());
+        }
 
         button.setOnAction(event -> {
             ReferenceHelper.getPlayerComponent().giveWeapon(id.getComponentSupplier().get());
@@ -69,7 +65,7 @@ public class UIHelper {
         skillIcon.setLayoutY(16);
 
         skillName.getStyleClass().add("skillName");
-        skillName.setFont(FontHelper.alagard(13));
+        skillName.setFont(FontHelper.alagard(11));
         skillName.setLayoutX(16);
         skillName.setLayoutY(64);
 
@@ -94,20 +90,6 @@ public class UIHelper {
         };
     }
 
-    public static Image getItemLevelDiamond(int level) {
-        return switch (level) {
-            case 0 -> itemLevel0;
-            case 1 -> itemLevel1;
-            case 2 -> itemLevel2;
-            case 3 -> itemLevel3;
-            case 4 -> itemLevel4;
-            case 5 -> itemLevel5;
-            case 6 -> itemLevel6;
-            case 7 -> itemLevel7;
-            case 8 -> itemLevel8;
-            default -> null;
-        };
-    }
 
 
     public static String getRomanNumber(int number) {

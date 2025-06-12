@@ -57,7 +57,7 @@ public class UIManager {
         if (!isLevelUpUiPresent) {
             ((GameHUDUIController)GAME_HUD_UI.getController()).levelUp(level);
             ((GameHUDUIController)GAME_HUD_UI.getController()).toggleInfo();
-            ((UpgradeUIController)LEVEL_UP_UI.getController()).updateOption();
+            ((UpgradeUIController)LEVEL_UP_UI.getController()).updateOption(level);
             isLevelUpUiPresent = true;
             FXGL.getGameScene().addUI(LEVEL_UP_UI);
             FXGL.getWorldProperties().setValue("isPaused", true);

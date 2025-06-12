@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomizationHelper {
-    public static Component rollNewWeapon() {
-        return getAvailableNewWeapon().get(FXGLMath.random(0, getAvailableNewWeapon().size() - 1));
-    }
     public static ArrayList<Component> rollNewWeapon(int count) {
         ArrayList<Component> availableNewWeapon = getAvailableNewWeapon();
         ArrayList<Component> result = new ArrayList<>();
@@ -21,6 +18,17 @@ public class RandomizationHelper {
             int index = FXGLMath.random(0, availableNewWeapon.size() - 1);
             result.add(availableNewWeapon.get(index));
             availableNewWeapon.remove(index);
+        }
+        return result;
+    }
+
+    public static ArrayList<Component> rollUpgradableWeapon(int count) {
+        ArrayList<Component> upgradableWeapon = getUpgradableComponent();
+        ArrayList<Component> result = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            int index = FXGLMath.random(0, upgradableWeapon.size() - 1);
+            result.add(upgradableWeapon.get(index));
+            upgradableWeapon.remove(index);
         }
         return result;
     }

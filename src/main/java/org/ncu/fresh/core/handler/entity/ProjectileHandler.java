@@ -5,6 +5,7 @@ import com.almasb.fxgl.dsl.components.HealthDoubleComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 import org.ncu.fresh.core.entity.EntityType;
+import org.ncu.fresh.core.entity.component.attack.animation.NormalProjectileAnimationComponent;
 import org.ncu.fresh.core.entity.component.resourcebar.HealthBarComponent;
 import org.ncu.fresh.core.entity.constant.ProjectileProperties;
 import org.ncu.fresh.core.entity.factory.ItemDropFactory;
@@ -28,7 +29,7 @@ public class ProjectileHandler extends CollisionHandler {
                 PropertyHelper.getIntProperty(a, ProjectileProperties.DAMAGE)
         );
         if (!PropertyHelper.getBooleanProperty(a, ProjectileProperties.IS_PIERCING)) {
-            a.removeFromWorld();
+            a.getComponent(NormalProjectileAnimationComponent.class).onHit();
         }
         if (b.getComponent(HealthDoubleComponent.class).isZero()) {
             ItemDropFactory.createExperienceOrb(b.getPosition());

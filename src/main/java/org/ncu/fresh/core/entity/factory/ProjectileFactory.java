@@ -22,11 +22,29 @@ public class ProjectileFactory implements EntityFactory {
     /*
     Create a new Projectile based on given position and direction
      */
-    public static Entity createProjectile(Point2D position, Point2D direction, int damage, double speed, double size, Color color, boolean isPiercing, WeaponData source) {
+    public static Entity createProjectile(String assetName, Point2D position, Point2D direction, int damage, double speed, double size, Color color, boolean isPiercing, WeaponData source) {
         Entity projectile =  FXGL.entityBuilder()
                 .type(EntityType.PROJECTILE)
                 .at(position)
-                .view(new Circle(size, color))
+                .with(new NormalProjectileAnimationComponent(assetName, 0, 4))
+                .with(new OffscreenCleanComponent())
+                .with(new ProjectileComponent(direction, speed))
+                .collidable()
+                .buildAndAttach();
+        InitializationHelper.initializeProjectile(projectile, damage, speed, size, isPiercing, source);
+
+        // Making Projectile won't collide with each other so that they won't interfere with each other
+        projectile.getComponent(CollidableComponent.class).addIgnoredType(EntityType.PROJECTILE);
+        projectile.getComponent(BoundingBoxComponent.class).addHitBox(new HitBox("body", BoundingShape.circle(size)));
+
+        return projectile;
+    }
+
+    public static Entity createOnHitProjectile(String assetName, int onHitFrame, Point2D position, Point2D direction, int damage, double speed, double size, boolean isPiercing, WeaponData source) {
+        Entity projectile =  FXGL.entityBuilder()
+                .type(EntityType.PROJECTILE)
+                .at(position)
+                .with(new NormalProjectileAnimationComponent(assetName, 1, onHitFrame))
                 .with(new OffscreenCleanComponent())
                 .with(new ProjectileComponent(direction, speed))
                 .collidable()
