@@ -85,5 +85,25 @@
       <Label fx:id="weaponLevel3" layoutX="23.0" layoutY="343.0" styleClass="skillLevel" />
       <Label fx:id="weaponLevel4" layoutX="63.0" layoutY="343.0" styleClass="skillLevel" />
       <Label fx:id="weaponLevel5" layoutX="103.0" layoutY="343.0" styleClass="skillLevel" />
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="512.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/ui/hud/swordIcon.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="killCount" layoutX="544.0" layoutY="14.0" text="0" textFill="WHITE">
+         <font>
+            <Font name="Alagard" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="512.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/ui/hud/lampIcon.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="surviveTime" layoutX="544.0" layoutY="38.0" text="0" textFill="WHITE">
+         <font>
+            <Font name="Alagard" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

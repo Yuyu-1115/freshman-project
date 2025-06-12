@@ -5,10 +5,15 @@ import com.almasb.fxgl.dsl.components.HealthDoubleComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.CollisionHandler;
 import org.ncu.fresh.core.entity.EntityType;
+import org.ncu.fresh.core.entity.component.attack.animation.NormalProjectileAnimationComponent;
 import org.ncu.fresh.core.entity.component.resourcebar.HealthBarComponent;
 import org.ncu.fresh.core.entity.constant.ProjectileProperties;
 import org.ncu.fresh.core.entity.factory.ItemDropFactory;
+import org.ncu.fresh.core.entity.helper.ReferenceHelper;
 import org.ncu.fresh.core.utils.PropertyHelper;
+import org.ncu.fresh.gui.UIManager;
+
+import static org.ncu.fresh.core.constant.Constant.ENEMY_KILLED;
 
 public class ProjectileHandler extends CollisionHandler {
     public ProjectileHandler() {
@@ -20,12 +25,18 @@ public class ProjectileHandler extends CollisionHandler {
     protected void onCollisionBegin(Entity a, Entity b) {
         b.getComponent(HealthDoubleComponent.class).damage(PropertyHelper.getIntProperty(a, ProjectileProperties.DAMAGE));
         b.getComponent(HealthBarComponent.class).damage();
+        ReferenceHelper.getPlayerComponent().updateRecord(
+                PropertyHelper.getWeaponDataProperty(a, ProjectileProperties.SOURCE),
+                PropertyHelper.getIntProperty(a, ProjectileProperties.DAMAGE)
+        );
         if (!PropertyHelper.getBooleanProperty(a, ProjectileProperties.IS_PIERCING)) {
-            a.removeFromWorld();
+            a.getComponent(NormalProjectileAnimationComponent.class).onHit();
         }
         if (b.getComponent(HealthDoubleComponent.class).isZero()) {
             ItemDropFactory.createExperienceOrb(b.getPosition());
             FXGL.getGameWorld().removeEntity(b);
+            FXGL.getWorldProperties().setValue(ENEMY_KILLED, FXGL.getWorldProperties().getInt(ENEMY_KILLED) + 1);
+            UIManager.updateCount();
         }
     }
 }

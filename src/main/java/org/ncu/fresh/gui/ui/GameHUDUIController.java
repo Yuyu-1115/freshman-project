@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.ncu.fresh.core.constant.Color;
+import org.ncu.fresh.core.constant.Constant;
 import org.ncu.fresh.core.entity.component.attack.base.Weapon;
 import org.ncu.fresh.core.entity.helper.ReferenceHelper;
 import org.ncu.fresh.core.utils.WeaponHelper;
@@ -48,6 +49,10 @@ public class GameHUDUIController implements UIController {
     @FXML private Label weaponLevel3;
     @FXML private Label weaponLevel4;
     @FXML private Label weaponLevel5;
+
+    @FXML private Label killCount;
+    @FXML private Label surviveTime;
+
 
 
     private final List<ImageView> weaponList = new ArrayList<>();
@@ -168,7 +173,23 @@ public class GameHUDUIController implements UIController {
         list.addAll(List.of(views));
     }
 
+    public void updateKillCount(int count) {
+        killCount.setText(String.valueOf(count));
+    }
+
+    public void updateSurviveTime(int count) {
+        surviveTime.setText(count / 60 + ":" + count % 60);
+    }
+
+    public void updateUsername() {
+        username.setText(FXGL.getWorldProperties().getString(Constant.USERNAME));
+    }
+
     @Override
     public void init() {
+        level.setFont(FontHelper.alagard(24));
+        username.setFont(FontHelper.alagard(18));
+        killCount.setFont(FontHelper.alagard(14));
+        updateKillCount(0);
     }
 }

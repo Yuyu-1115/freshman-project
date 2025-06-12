@@ -8,7 +8,7 @@ import static org.ncu.fresh.core.constant.Constant.TILE_SIZE;
 
 public class AquaCutterComponent extends SpinningProjectileComponent {
     public AquaCutterComponent() {
-        super(WeaponHelper.getAssetName("aquaCutter"), 4, 8, 0.6, 4 * TILE_SIZE);
+        super(WeaponHelper.getAssetName("aquaCutter"), 8, 12, 0.6, 4 * TILE_SIZE);
     }
 
     @Override

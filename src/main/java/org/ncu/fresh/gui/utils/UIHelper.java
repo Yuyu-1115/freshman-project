@@ -31,7 +31,14 @@ public class UIHelper {
         ImageView skillIcon = new ImageView(WeaponHelper.getIcon(id.getId()));
         Button button = new Button();
         Label skillName = new Label(id.getName());
-        Label skillDesc = new Label(id.getBaseDesc());
+        Label skillDesc = new Label();
+
+        if (ReferenceHelper.getPlayer().getComponentOptional(id.getComponentSupplier().get().getClass()).isPresent()) {
+            skillDesc.setText(id.getUpgradeDesc());
+        }
+        else {
+            skillDesc.setText(id.getBaseDesc());
+        }
 
         button.setOnAction(event -> {
             ReferenceHelper.getPlayerComponent().giveWeapon(id.getComponentSupplier().get());
@@ -58,7 +65,7 @@ public class UIHelper {
         skillIcon.setLayoutY(16);
 
         skillName.getStyleClass().add("skillName");
-        skillName.setFont(FontHelper.alagard(13));
+        skillName.setFont(FontHelper.alagard(11));
         skillName.setLayoutX(16);
         skillName.setLayoutY(64);
 
@@ -83,6 +90,8 @@ public class UIHelper {
         };
     }
 
+
+
     public static String getRomanNumber(int number) {
         return switch (number) {
             case 1 -> "I";
@@ -92,9 +101,11 @@ public class UIHelper {
             case 5 -> "V";
             case 6 -> "VI";
             case 7 -> "VII";
+            case 8 -> "VIII";
             default -> "";
         };
     }
+
 
     public static double getLayoutX(int number) {
         return switch (number) {
@@ -105,7 +116,20 @@ public class UIHelper {
             case 5 -> 21.9;
             case 6 -> 20.9;
             case 7 -> 20.2;
-            default -> 0;
+            default -> 19;
         };
+    }
+
+    public static String numberFormatting(int number) {
+        if (number >= 1_000_000_000) {
+            return number / 1_000_000_000 + "." +  (number % 1_000_000_000) / 1_000_000 + "B";
+        } else if (number >= 1_000_000) {
+            return number / 1_000_000 + "." + (number % 1_000_000) / 1_000 + "M";
+        } else if (number >= 1_000) {
+            return number / 1_000 +  "." + (number % 1_000) + "K";
+        }
+        else {
+            return String.valueOf(number);
+        }
     }
 }
