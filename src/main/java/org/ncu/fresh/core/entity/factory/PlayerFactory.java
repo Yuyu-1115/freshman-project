@@ -5,29 +5,29 @@ import com.almasb.fxgl.dsl.components.HealthDoubleComponent;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.Spawns;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import com.almasb.fxgl.entity.components.BoundingBoxComponent;
+import com.almasb.fxgl.physics.BoundingShape;
+import com.almasb.fxgl.physics.HitBox;
 import org.ncu.fresh.core.entity.EntityType;
-import org.ncu.fresh.core.entity.component.attack.ZephyrStarComponent;
 import org.ncu.fresh.core.entity.component.player.LevelComponent;
+import org.ncu.fresh.core.entity.component.player.PlayerAnimationComponent;
 import org.ncu.fresh.core.entity.component.player.PlayerComponent;
 import org.ncu.fresh.core.entity.helper.InitializationHelper;
-import org.ncu.fresh.core.handler.InputHandler;
 
 public class PlayerFactory implements EntityFactory {
     @Spawns("player")
     public static Entity createPlayer() {
-
         Entity player = FXGL.entityBuilder()
                 .type(EntityType.PLAYER)
-                .at(400, 300, -1)
-                .viewWithBBox(new Rectangle(20, 20, Color.BLUE))
+                .at(320, 180, -1)
                 .with(new PlayerComponent())
+                .with(new PlayerAnimationComponent())
                 .with(new LevelComponent())
                 .with(new HealthDoubleComponent(100))
                 .collidable()
                 .buildAndAttach();
         InitializationHelper.initializePlayer(player);
+        player.getComponent(BoundingBoxComponent.class).addHitBox(new HitBox("body", BoundingShape.circle(10)));
         return player;
     }
 }

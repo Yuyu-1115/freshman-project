@@ -4,10 +4,13 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.component.Component;
 import javafx.geometry.Point2D;
+import org.ncu.fresh.core.constant.Constant;
 import org.ncu.fresh.core.constant.WeaponData;
 import org.ncu.fresh.core.entity.factory.ProjectileFactory;
 
 import java.util.ArrayList;
+
+import static org.ncu.fresh.core.constant.Constant.TILE_SIZE;
 
 public abstract class SpinningProjectileComponent extends Component implements Weapon {
     /*
@@ -72,7 +75,7 @@ public abstract class SpinningProjectileComponent extends Component implements W
         double diff = Math.PI * 2 / projectileNumber;
         Point2D center = entity.getCenter();
         for (int i = 0; i < projectileNumber; i++) {
-            projectileList.get(i).setPosition(center.getX() + radius * Math.cos(angle + diff * i) - 8, center.getY() + radius * Math.sin(angle + diff * i) - 8);
+            projectileList.get(i).setPosition(center.getX() + radius * Math.cos(angle + diff * i) - (double) TILE_SIZE / 2, center.getY() + radius * Math.sin(angle + diff * i) - (double) TILE_SIZE / 2);
         }
     }
 

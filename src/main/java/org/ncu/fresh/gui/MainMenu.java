@@ -16,7 +16,6 @@ public class MainMenu extends FXGLMenu {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu/mainMenu.fxml"));
             Parent root = loader.load();
-            ((MainMenuController)loader.getController()).setMainMenu(this);
             getContentRoot().getChildren().add(root);
         } catch (IOException e) {
             e.printStackTrace();
@@ -25,6 +24,9 @@ public class MainMenu extends FXGLMenu {
 
     public void startNewGame() {
         fireNewGame();
+    }
+    public void toMainMenu() {
+        fireExitToMainMenu();
     }
 
 }

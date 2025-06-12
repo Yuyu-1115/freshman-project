@@ -10,4 +10,5 @@ public class Constant {
 
     public static final String IS_PAUSED = "isPaused";
     public static final String ENEMY_KILLED = "enemyKilled";
+    public static final String USERNAME = "username";
 }

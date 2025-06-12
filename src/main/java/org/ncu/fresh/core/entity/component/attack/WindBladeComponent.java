@@ -8,7 +8,7 @@ import static org.ncu.fresh.core.constant.Constant.TILE_SIZE;
 
 public class WindBladeComponent extends SpinningProjectileComponent {
     public WindBladeComponent() {
-        super(WeaponHelper.getAssetName("windBlade"), 2, 12, 1.5, 5 * TILE_SIZE);
+        super(WeaponHelper.getAssetName("windBlade"), 2, 12, 2, 5 * TILE_SIZE);
     }
 
     @Override

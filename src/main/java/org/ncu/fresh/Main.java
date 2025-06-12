@@ -3,7 +3,6 @@ package org.ncu.fresh;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
-import com.almasb.fxgl.entity.Entity;
 import org.ncu.fresh.core.entity.factory.PlayerFactory;
 import org.ncu.fresh.core.entity.helper.ReferenceHelper;
 import org.ncu.fresh.core.handler.EventHandler;

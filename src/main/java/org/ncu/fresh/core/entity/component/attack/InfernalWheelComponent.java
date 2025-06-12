@@ -19,7 +19,6 @@ public class InfernalWheelComponent extends SpinningProjectileComponent {
     @Override
     public void levelUp() {
         level += 1;
-        damage += 10;
         projectileNumber += 1;
         reinitializeProjectile();
     }

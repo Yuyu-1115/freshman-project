@@ -30,10 +30,12 @@ module org.ncu.fresh {
     opens assets.textures.itemdrop;
     opens assets.textures.icon;
     opens assets.ui.fonts;
+
     opens assets.textures.ui.upgrade;
     opens assets.textures.ui.hud;
     opens assets.textures.ui.main_menu;
     opens assets.textures.ui.result;
+    opens assets.textures.entity;
 
     opens description;
 

@@ -1,15 +1,19 @@
 package org.ncu.fresh.gui.ui;
 
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.ui.UIController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import org.ncu.fresh.core.constant.Constant;
 import org.ncu.fresh.core.entity.component.attack.base.Weapon;
+import org.ncu.fresh.core.entity.component.player.LevelComponent;
 import org.ncu.fresh.core.entity.helper.ReferenceHelper;
 import org.ncu.fresh.core.handler.TimerHandler;
 import org.ncu.fresh.core.utils.WeaponHelper;
+import org.ncu.fresh.gui.utils.FontHelper;
 import org.ncu.fresh.gui.utils.UIHelper;
 
 import java.util.ArrayList;
@@ -37,15 +41,6 @@ public class ResultMenuController implements UIController {
     @FXML private Label weaponDamage4;
     @FXML private Label weaponDamage5;
 
-
-    @FXML private ImageView weaponDiamond0;
-    @FXML private ImageView weaponDiamond1;
-    @FXML private ImageView weaponDiamond2;
-    @FXML private ImageView weaponDiamond3;
-    @FXML private ImageView weaponDiamond4;
-    @FXML private ImageView weaponDiamond5;
-
-
     @FXML private Label weaponLevel0;
     @FXML private Label weaponLevel1;
     @FXML private Label weaponLevel2;
@@ -53,20 +48,33 @@ public class ResultMenuController implements UIController {
     @FXML private Label weaponLevel4;
     @FXML private Label weaponLevel5;
 
+    @FXML private Text result0;
+    @FXML private Text result1;
+    @FXML private Text result2;
+    @FXML private Label enemyKilled;
+    @FXML private Label timeSurvived;
+    @FXML private Label playerLevel;
+
     private final ArrayList<ImageView> weaponList = new ArrayList<>();
     private final ArrayList<Text> weaponNameList = new ArrayList<>();
     private final ArrayList<Label> weaponDamageList = new ArrayList<>();
-    private final ArrayList<ImageView> weaponDiamondList = new ArrayList<>();
     private final ArrayList<Label> weaponLevelList = new ArrayList<>();
 
-
     public void updateResult() {
-        if (weaponList.isEmpty() || weaponNameList.isEmpty() || weaponDamageList.isEmpty() || weaponDiamondList.isEmpty() || weaponLevelList.isEmpty()) {
+        if (weaponList.isEmpty() || weaponNameList.isEmpty() || weaponDamageList.isEmpty() ||  weaponLevelList.isEmpty()) {
             weaponList.addAll(List.of(weapon0, weapon1, weapon2, weapon3, weapon4, weapon5));
             weaponNameList.addAll(List.of(weaponName0, weaponName1, weaponName2, weaponName3, weaponName4, weaponName5));
             weaponDamageList.addAll(List.of(weaponDamage0, weaponDamage1, weaponDamage2, weaponDamage3, weaponDamage4, weaponDamage5));
-            weaponDiamondList.addAll(List.of(weaponDiamond0, weaponDiamond1, weaponDiamond2, weaponDiamond3, weaponDiamond4, weaponDiamond5));
             weaponLevelList.addAll(List.of(weaponLevel0, weaponLevel1, weaponLevel2, weaponLevel3, weaponLevel4, weaponLevel5));
+            weaponNameList.forEach(text -> text.setFont(FontHelper.alagard(12)));
+            weaponLevelList.forEach(text -> text.setFont(FontHelper.alagard(10)));
+
+            result0.setFont(FontHelper.alagard(12));
+            result1.setFont(FontHelper.alagard(12));
+            result2.setFont(FontHelper.alagard(12));
+            enemyKilled.setFont(FontHelper.alagard(10));
+            timeSurvived.setFont(FontHelper.alagard(10));
+            playerLevel.setFont(FontHelper.alagard(10));
         }
 
         ArrayList<Component> buildList = ReferenceHelper.getPlayerComponent().getWeaponOwned();
@@ -75,7 +83,6 @@ public class ResultMenuController implements UIController {
         for (int i = 0; i < weaponList.size(); i++) {
             weaponList.get(i).setImage(null);
             weaponNameList.get(i).setText("");
-            weaponDiamondList.get(i).setImage(null);
             weaponLevelList.get(i).setText("");
         }
 
@@ -91,16 +98,11 @@ public class ResultMenuController implements UIController {
 
         }
 
-        // TODO: Fix number display
         for (int i = 0; i < buildList.size(); i++) {
             int level = ((Weapon) buildList.get(i)).getLevel();
-            weaponDiamondList.get(i).setImage(
-                UIHelper.getItemLevelDiamond(level)
-            );
             weaponLevelList.get(i).setText(
                     UIHelper.getRomanNumber(level)
             );
-            weaponLevelList.get(i).setLayoutX(weaponLevel0.getLayoutX() - 19 + UIHelper.getLayoutX(level));
         }
 
         for (int i = 0; i < 6; i++) {
@@ -110,10 +112,25 @@ public class ResultMenuController implements UIController {
             }
             weaponDamageList.get(i).setText(UIHelper.numberFormatting(damageDealt.get(i) / TimerHandler.getGameTime()));
         }
+
+        enemyKilled.setText(String.valueOf(FXGL.getWorldProperties().getInt(Constant.ENEMY_KILLED)));
+        timeSurvived.setText(TimerHandler.getGameTime() / 60 + ":" + TimerHandler.getGameTime() % 60);
+        playerLevel.setText(String.valueOf(ReferenceHelper.getPlayer().getComponent(LevelComponent.class).getLevel()));
     }
+
+    @FXML
+    private void startNewGame() {
+        FXGL.getGameController().startNewGame();
+    }
+
+    @FXML
+    private void exitToMainMenu() {
+        FXGL.getGameController().resumeEngine();
+        FXGL.getGameController().gotoMainMenu();
+    }
+
 
     @Override
     public void init() {
-
     }
 }

@@ -39,12 +39,14 @@ public class PlayerComponent extends Component {
             return;
         }
         entity.translateX(-getMovementSpeed());
+        entity.setScaleX(-1);
     }
     public void moveRight() {
         if (FXGL.getWorldProperties().getBoolean(Constant.IS_PAUSED)) {
             return;
         }
         entity.translateX(getMovementSpeed());
+        entity.setScaleX(1);
     }
 
     public void damage(double amount) {
@@ -81,9 +83,6 @@ public class PlayerComponent extends Component {
         UIManager.updateBar();
         TimerHandler.updateBackground();
         if (ReferenceHelper.getPlayer().getComponent(HealthDoubleComponent.class).isZero()) {
-            UIManager.showResult();
-            FXGL.getGameController().pauseEngine();
-            FXGL.getWorldProperties().setValue(Constant.IS_PAUSED, true);
         }
     }
 

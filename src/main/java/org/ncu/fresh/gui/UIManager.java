@@ -5,6 +5,7 @@ import com.almasb.fxgl.dsl.components.HealthDoubleComponent;
 import com.almasb.fxgl.ui.UI;
 import javafx.fxml.FXMLLoader;
 import org.ncu.fresh.Main;
+import org.ncu.fresh.core.constant.Constant;
 import org.ncu.fresh.core.entity.component.player.LevelComponent;
 import org.ncu.fresh.core.entity.helper.ReferenceHelper;
 import org.ncu.fresh.gui.ui.GameHUDUIController;
@@ -30,7 +31,6 @@ public class UIManager {
             throw new RuntimeException(e);
         }
     }
-
     static {
         try {
             FXMLLoader loader = new FXMLLoader(UIManager.class.getResource("/menu/upgradeUI.fxml"));
@@ -61,6 +61,7 @@ public class UIManager {
             isLevelUpUiPresent = true;
             FXGL.getGameScene().addUI(LEVEL_UP_UI);
             FXGL.getWorldProperties().setValue("isPaused", true);
+            ((GameHUDUIController)GAME_HUD_UI.getController()).updateUsername();
         }
     }
 
@@ -78,6 +79,14 @@ public class UIManager {
         );
     }
 
+    public static void updateCount() {
+        ((GameHUDUIController)GAME_HUD_UI.getController()).updateKillCount(FXGL.getWorldProperties().getInt(Constant.ENEMY_KILLED));
+    }
+
+    public static void updateTimer(int count) {
+        ((GameHUDUIController)GAME_HUD_UI.getController()).updateSurviveTime(count);
+    }
+
     public static void updateInventory() {
         ((GameHUDUIController)GAME_HUD_UI.getController()).updateInventory();
     }
@@ -87,4 +96,6 @@ public class UIManager {
         FXGL.getGameScene().removeUI(GAME_HUD_UI);
         FXGL.getGameScene().addUI(RESULT_UI);
     }
+
+
 }

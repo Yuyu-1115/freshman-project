@@ -11,6 +11,7 @@ import org.ncu.fresh.core.entity.constant.ProjectileProperties;
 import org.ncu.fresh.core.entity.factory.ItemDropFactory;
 import org.ncu.fresh.core.entity.helper.ReferenceHelper;
 import org.ncu.fresh.core.utils.PropertyHelper;
+import org.ncu.fresh.gui.UIManager;
 
 import static org.ncu.fresh.core.constant.Constant.ENEMY_KILLED;
 
@@ -35,6 +36,7 @@ public class ProjectileHandler extends CollisionHandler {
             ItemDropFactory.createExperienceOrb(b.getPosition());
             FXGL.getGameWorld().removeEntity(b);
             FXGL.getWorldProperties().setValue(ENEMY_KILLED, FXGL.getWorldProperties().getInt(ENEMY_KILLED) + 1);
+            UIManager.updateCount();
         }
     }
 }
