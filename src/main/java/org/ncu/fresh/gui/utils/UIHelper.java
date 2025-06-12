@@ -25,6 +25,17 @@ public class UIHelper {
     private static final Image itemFrame7 = FXGL.getAssetLoader().loadImage("ui/hud/itemFrame7.png");
     private static final Image itemFrame8 = FXGL.getAssetLoader().loadImage("ui/hud/itemFrame8.png");
 
+
+    private static final Image itemLevel0 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel0.png");
+    private static final Image itemLevel1 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel1.png");
+    private static final Image itemLevel2 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel2.png");
+    private static final Image itemLevel3 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel3.png");
+    private static final Image itemLevel4 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel4.png");
+    private static final Image itemLevel5 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel5.png");
+    private static final Image itemLevel6 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel6.png");
+    private static final Image itemLevel7 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel7.png");
+    private static final Image itemLevel8 = FXGL.getAssetLoader().loadImage("ui/result/itemLevel8.png");
+
     public static void createUpgradeOption(WeaponData id, AnchorPane buttonView) {
         buttonView.getChildren().clear();
         ImageView background = new ImageView(upgradeChoice);
@@ -83,6 +94,22 @@ public class UIHelper {
         };
     }
 
+    public static Image getItemLevelDiamond(int level) {
+        return switch (level) {
+            case 0 -> itemLevel0;
+            case 1 -> itemLevel1;
+            case 2 -> itemLevel2;
+            case 3 -> itemLevel3;
+            case 4 -> itemLevel4;
+            case 5 -> itemLevel5;
+            case 6 -> itemLevel6;
+            case 7 -> itemLevel7;
+            case 8 -> itemLevel8;
+            default -> null;
+        };
+    }
+
+
     public static String getRomanNumber(int number) {
         return switch (number) {
             case 1 -> "I";
@@ -92,9 +119,11 @@ public class UIHelper {
             case 5 -> "V";
             case 6 -> "VI";
             case 7 -> "VII";
+            case 8 -> "VIII";
             default -> "";
         };
     }
+
 
     public static double getLayoutX(int number) {
         return switch (number) {
@@ -105,7 +134,20 @@ public class UIHelper {
             case 5 -> 21.9;
             case 6 -> 20.9;
             case 7 -> 20.2;
-            default -> 0;
+            default -> 19;
         };
+    }
+
+    public static String numberFormatting(int number) {
+        if (number >= 1_000_000_000) {
+            return number / 1_000_000_000 + "." +  (number % 1_000_000_000) / 1_000_000 + "B";
+        } else if (number >= 1_000_000) {
+            return number / 1_000_000 + "." + (number % 1_000_000) / 1_000 + "M";
+        } else if (number >= 1_000) {
+            return number / 1_000 +  "." + (number % 1_000) + "K";
+        }
+        else {
+            return String.valueOf(number);
+        }
     }
 }

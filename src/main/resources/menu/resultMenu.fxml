@@ -1,14 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ncu.fresh.gui.ui.ResultMenuController">
+   <children>
+      <ImageView fitHeight="224.0" fitWidth="176.0" layoutX="128.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/ui/result/resultMenuLeft.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="160.0" fitWidth="176.0" layoutX="336.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/ui/result/resultMenuRight.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="weapon0" fitHeight="16.0" fitWidth="16.0" layoutX="138.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/icon/infernalWheel.png" />
+         </image></ImageView>
+      <ImageView fx:id="weapon1" fitHeight="16.0" fitWidth="16.0" layoutX="138.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/icon/windBlade.png" />
+         </image></ImageView>
+      <ImageView fx:id="weapon2" fitHeight="16.0" fitWidth="16.0" layoutX="138.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/icon/zephyrStar.png" />
+         </image></ImageView>
+      <ImageView fx:id="weapon3" fitHeight="16.0" fitWidth="16.0" layoutX="138.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/icon/aquaCutter.png" />
+         </image></ImageView>
+      <ImageView fx:id="weapon4" fitHeight="16.0" fitWidth="16.0" layoutX="138.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/icon/zephyrStar.png" />
+         </image></ImageView>
+      <ImageView fx:id="weapon5" fitHeight="16.0" fitWidth="16.0" layoutX="138.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/icon/infernalWheel.png" />
+         </image></ImageView>
+      <Text fx:id="weaponName0" fill="WHITE" layoutX="174.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infernal Wheels">
+         <font>
+            <Font name="Alagard" size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="weaponName1" fill="WHITE" layoutX="174.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wind Cutter">
+         <font>
+            <Font name="Alagard" size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="weaponName2" fill="WHITE" layoutX="174.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zephyr Stars">
+         <font>
+            <Font name="Alagard" size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="weaponName3" fill="WHITE" layoutX="174.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aqua Cutters">
+         <font>
+            <Font name="Alagard" size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="weaponName4" fill="WHITE" layoutX="174.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zephyr Stars">
+         <font>
+            <Font name="Alagard" size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="weaponName5" fill="WHITE" layoutX="174.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem Ipsum">
+         <font>
+            <Font name="Alagard" size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="leftTitle" fill="WHITE" layoutX="156.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Build" textAlignment="CENTER">
+         <font>
+            <Font name="Alagard" size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="273.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DPS">
+         <font>
+            <Font name="Alagard" size="8.0" />
+         </font>
+      </Text>
+      <Label fx:id="weaponDamage0" layoutX="273.0" layoutY="131.0" text="50" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Alagard" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="weaponDamage1" layoutX="273.0" layoutY="155.0" text="275k" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Alagard" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="weaponDamage2" layoutX="273.0" layoutY="179.0" text="123" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Alagard" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="weaponDamage3" layoutX="273.0" layoutY="203.0" text="2.3M" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Alagard" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="weaponDamage4" layoutX="273.0" layoutY="227.0" text="30B" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Alagard" size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="weaponDamage5" layoutX="273.0" layoutY="251.0" text="1.3k" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Alagard" size="10.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="weaponDiamond0" fitHeight="12.0" fitWidth="16.0" layoutX="158.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/ui/result/itemLevel0.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="weaponDiamond1" fitHeight="12.0" fitWidth="12.0" layoutX="158.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/ui/result/itemLevel1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="weaponDiamond2" fitHeight="12.0" fitWidth="12.0" layoutX="158.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/ui/result/itemLevel5.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="weaponDiamond3" fitHeight="12.0" fitWidth="12.0" layoutX="158.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/ui/result/itemLevel8.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="weaponDiamond4" fitHeight="12.0" fitWidth="12.0" layoutX="158.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/ui/result/itemLevel4.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="weaponDiamond5" fitHeight="12.0" fitWidth="12.0" layoutX="158.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/textures/ui/result/itemLevel6.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="weaponLevel0" layoutX="162.0" layoutY="132.0" styleClass="skillLevel" stylesheets="@../assets/ui/css/uiElement.css" text="I" textFill="WHITE">
+         <font>
+            <Font name="Share Tech Mono" size="6.0" />
+         </font>
+      </Label>
+      <Label fx:id="weaponLevel1" layoutX="162.0" layoutY="156.0" styleClass="skillLevel" stylesheets="@../assets/ui/css/uiElement.css" text="I" textFill="WHITE">
+         <font>
+            <Font name="Share Tech Mono" size="6.0" />
+         </font>
+      </Label>
+      <Label fx:id="weaponLevel2" layoutX="162.0" layoutY="180.0" styleClass="skillLevel" stylesheets="@../assets/ui/css/uiElement.css" text="I" textFill="WHITE">
+         <font>
+            <Font name="Share Tech Mono" size="6.0" />
+         </font>
+      </Label>
+      <Label fx:id="weaponLevel3" layoutX="162.0" layoutY="204.0" styleClass="skillLevel" stylesheets="@../assets/ui/css/uiElement.css" text="I" textFill="WHITE">
+         <font>
+            <Font name="Share Tech Mono" size="6.0" />
+         </font>
+      </Label>
+      <Label fx:id="weaponLevel4" layoutX="162.0" layoutY="228.0" styleClass="skillLevel" stylesheets="@../assets/ui/css/uiElement.css" text="I" textFill="WHITE">
+         <font>
+            <Font name="Share Tech Mono" size="6.0" />
+         </font>
+      </Label>
+      <Label fx:id="weaponLevel5" layoutX="162.0" layoutY="252.0" styleClass="skillLevel" stylesheets="@../assets/ui/css/uiElement.css" text="I" textFill="WHITE">
+         <font>
+            <Font name="Share Tech Mono" size="6.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>

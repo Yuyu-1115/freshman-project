@@ -8,6 +8,7 @@ import org.ncu.fresh.core.entity.component.attack.InfernalWheelComponent;
 import org.ncu.fresh.core.entity.component.player.LevelComponent;
 import org.ncu.fresh.core.entity.component.player.PlayerComponent;
 import org.ncu.fresh.core.entity.helper.ReferenceHelper;
+import org.ncu.fresh.gui.UIManager;
 
 public class InputHandler {
     public static void initPlayerMovement() {
@@ -19,6 +20,8 @@ public class InputHandler {
                 () -> ReferenceHelper.getPlayerComponent().moveLeft());
         FXGL.onKey(KeyCode.D,
                 () -> ReferenceHelper.getPlayerComponent().moveRight());
+        FXGL.onKey(KeyCode.Q,
+                () -> UIManager.levelUp(ReferenceHelper.getPlayer().getComponent(LevelComponent.class).getLevel() + 1));
 
     }
 }

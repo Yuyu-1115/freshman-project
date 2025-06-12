@@ -50,6 +50,7 @@ public class GameHUDUIController implements UIController {
     @FXML private Label weaponLevel5;
 
 
+
     private final List<ImageView> weaponList = new ArrayList<>();
 
     private final List<ImageView> weaponSlotList = new ArrayList<>();
@@ -170,5 +171,7 @@ public class GameHUDUIController implements UIController {
 
     @Override
     public void init() {
+        level.setFont(FontHelper.alagard(24));
+        username.setFont(FontHelper.alagard(18));
     }
 }

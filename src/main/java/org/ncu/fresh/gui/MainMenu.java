@@ -14,7 +14,7 @@ public class MainMenu extends FXGLMenu {
     public MainMenu(@NotNull MenuType type) {
         super(type);
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu/mainPage.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/menu/mainMenu.fxml"));
             Parent root = loader.load();
             ((MainMenuController)loader.getController()).setMainMenu(this);
             getContentRoot().getChildren().add(root);

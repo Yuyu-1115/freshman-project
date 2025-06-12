@@ -4,6 +4,7 @@ import com.almasb.fxgl.app.scene.GameView;
 import com.almasb.fxgl.core.math.FXGLMath;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.time.TimerAction;
+import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
@@ -19,14 +20,17 @@ import static org.ncu.fresh.core.constant.Constant.WINDOWS_WIDTH;
 
 public class TimerHandler {
     private static final ImageView background = new ImageView(FXGL.getAssetLoader().loadImage("ui/main_menu/background.png"));
+    private static int gameTime;
 
-    private static final TimerAction enemySpawnTimer ;
+    private static final TimerAction enemySpawnTimer;
+    private static final TimerAction secondTimer;
 
     static {
        enemySpawnTimer = FXGL.getGameTimer().runAtInterval(TimerHandler::enemySpawn, Duration.seconds(5));
        enemySpawnTimer.pause();
+       secondTimer = FXGL.getGameTimer().runAtInterval(() -> gameTime++, Duration.seconds(1));
+       secondTimer.pause();
     }
-
 
     public static void enemySpawn() {
         int number = FXGL.random(5, 10);
@@ -39,6 +43,10 @@ public class TimerHandler {
         }
     }
 
+    public static int getGameTime() {
+        return gameTime;
+    }
+
     public static void updateBackground() {
         // An dirty way to update the background
         // I hate my life
@@ -49,14 +57,18 @@ public class TimerHandler {
 
     public static void initializeTimer() {
         enemySpawnTimer.resume();
+        secondTimer.resume();
         FXGL.getGameScene().addGameView(new GameView(background, -100));
+        gameTime = 0;
     }
 
     public static void pauseTimer() {
         enemySpawnTimer.pause();
+        secondTimer.pause();
     }
 
     public static void resumeTimer() {
         enemySpawnTimer.resume();
+        secondTimer.resume();
     }
 }

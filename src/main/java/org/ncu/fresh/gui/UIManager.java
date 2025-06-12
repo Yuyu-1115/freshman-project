@@ -8,6 +8,7 @@ import org.ncu.fresh.Main;
 import org.ncu.fresh.core.entity.component.player.LevelComponent;
 import org.ncu.fresh.core.entity.helper.ReferenceHelper;
 import org.ncu.fresh.gui.ui.GameHUDUIController;
+import org.ncu.fresh.gui.ui.ResultMenuController;
 import org.ncu.fresh.gui.ui.UpgradeUIController;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class UIManager {
      */
     private static final UI GAME_HUD_UI;
     private static final UI LEVEL_UP_UI;
+    private static final UI RESULT_UI;
     private static boolean isLevelUpUiPresent = false;
 
     static {
@@ -31,10 +33,19 @@ public class UIManager {
 
     static {
         try {
-            FXMLLoader loader = new FXMLLoader(UIManager.class.getResource("/menu/UpgradeUI.fxml"));
+            FXMLLoader loader = new FXMLLoader(UIManager.class.getResource("/menu/upgradeUI.fxml"));
             LEVEL_UP_UI = new UI(loader.load(), loader.getController());
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    static {
+        try {
+            FXMLLoader loader = new FXMLLoader(UIManager.class.getResource("/menu/resultMenu.fxml"));
+            RESULT_UI = new UI(loader.load(), loader.getController());
+        } catch (IOException e) {
+            throw new RuntimeException();
         }
     }
 
@@ -69,5 +80,11 @@ public class UIManager {
 
     public static void updateInventory() {
         ((GameHUDUIController)GAME_HUD_UI.getController()).updateInventory();
+    }
+
+    public static void showResult() {
+        ((ResultMenuController)RESULT_UI.getController()).updateResult();
+        FXGL.getGameScene().removeUI(GAME_HUD_UI);
+        FXGL.getGameScene().addUI(RESULT_UI);
     }
 }

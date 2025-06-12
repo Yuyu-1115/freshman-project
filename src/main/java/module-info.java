@@ -23,7 +23,7 @@ module org.ncu.fresh {
     opens org.ncu.fresh.gui to javafx.fxml;
     opens org.ncu.fresh.gui.ui to javafx.fxml;
 
-    // this solves the issue of texture not loading, but I don't really know why
+    // this solves the issue of texture not loading, but I don't really know about resources encapsulation
     // at least it turns error into warning
     opens assets.textures;
     opens assets.textures.projectile;
@@ -33,6 +33,7 @@ module org.ncu.fresh {
     opens assets.textures.ui.upgrade;
     opens assets.textures.ui.hud;
     opens assets.textures.ui.main_menu;
+    opens assets.textures.ui.result;
 
     opens description;
 
